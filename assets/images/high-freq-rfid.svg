@@ -1,0 +1,9 @@
+<svg width="256" height="256" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg">
+<title>High Frequency RFID</title><desc>Thin outline icon for 13.56 MHz high frequency RFID.</desc>
+<g stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+<rect x="44" y="64" width="98" height="128" rx="12"/>
+<path d="M66 96H120"/><path d="M66 116H104"/><rect x="78" y="132" width="30" height="30" rx="4"/>
+<path d="M154 96C170 108 178 126 178 144C178 162 170 180 154 192"/>
+<path d="M170 80C190 96 202 119 202 144C202 169 190 192 170 208"/>
+<path d="M186 64C210 84 226 112 226 144C226 176 210 204 186 224"/>
+</g></svg>

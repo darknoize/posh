@@ -1,0 +1,7 @@
+<svg width="256" height="256" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg">
+<title>Barcode Reader</title><desc>Thin outline icon for 1D and 2D barcode scanning.</desc>
+<g stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+<path d="M60 84V172"/><path d="M80 84V172"/><path d="M96 84V172"/><path d="M120 84V172"/>
+<path d="M144 84V172"/><path d="M160 84V172"/><path d="M180 84V172"/>
+<path d="M44 64V92H72"/><path d="M212 64V92H184"/><path d="M44 192V164H72"/><path d="M212 192V164H184"/>
+</g></svg>

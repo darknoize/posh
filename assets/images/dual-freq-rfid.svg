@@ -1,0 +1,9 @@
+<svg width="256" height="256" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg">
+<title>Dual Frequency RFID</title><desc>Thin outline icon for dual frequency RFID.</desc>
+<g stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+<rect x="36" y="70" width="76" height="116" rx="12"/>
+<rect x="92" y="70" width="76" height="116" rx="12"/>
+<path d="M58 100H90"/><path d="M114 100H146"/>
+<path d="M180 96C196 108 204 126 204 144C204 162 196 180 180 192"/>
+<path d="M196 80C216 96 228 119 228 144C228 169 216 192 196 208"/>
+</g></svg>

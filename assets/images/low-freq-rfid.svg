@@ -1,0 +1,8 @@
+<svg width="256" height="256" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg">
+<title>Low Frequency RFID</title><desc>Thin outline icon for 125 kHz low frequency RFID.</desc>
+<g stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+<rect x="44" y="64" width="98" height="128" rx="12"/>
+<path d="M66 96H120"/><path d="M66 116H104"/><circle cx="93" cy="147" r="16"/>
+<path d="M154 112C165 121 170 132 170 144C170 156 165 167 154 176"/>
+<path d="M168 96C183 108 190 125 190 144C190 163 183 180 168 192"/>
+</g></svg>

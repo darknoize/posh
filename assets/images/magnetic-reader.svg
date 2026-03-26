@@ -1,0 +1,10 @@
+<svg width="256" height="256" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg">
+<title>Magnetic Reader</title><desc>Thin outline icon for magnetic stripe credential reader.</desc>
+<g stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+<rect x="44" y="72" width="168" height="112" rx="14"/>
+<path d="M64 102H192"/>
+<path d="M64 122H170"/>
+<path d="M64 144H144"/>
+<path d="M176 136L196 156"/>
+<path d="M196 136L176 156"/>
+</g></svg>
