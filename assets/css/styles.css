@@ -26,15 +26,23 @@ html[data-theme="light"] {
 }
 
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+html {
+  scroll-behavior: smooth;
+  background:
+    radial-gradient(circle at top center, rgba(143,109,255,.16), transparent 30%),
+    linear-gradient(180deg, #05070b 0%, #06080d 50%, #090d18 100%);
+  background-attachment: fixed;
+  background-color: #06080d;
+}
+html[data-theme="light"] {
+  background: transparent;
+}
 body {
   margin: 0;
   font-family: 'Inter', sans-serif;
   color: var(--text);
-  background:
-    radial-gradient(circle at top center, rgba(143,109,255,.16), transparent 30%),
-    linear-gradient(180deg, #05070b 0%, #06080d 50%, #090d18 100%);
-  transition: background .28s ease, color .28s ease;
+  background: transparent;
+  transition: color .28s ease;
 }
 html[data-theme="light"] body {
   background:
