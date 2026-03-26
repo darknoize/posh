@@ -1,0 +1,8 @@
+<svg width="256" height="256" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg">
+<title>Smart Chip Reader</title><desc>Thin outline icon for smart chip credential reader.</desc>
+<g stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+<rect x="54" y="64" width="148" height="128" rx="14"/>
+<rect x="98" y="96" width="60" height="64" rx="8"/>
+<path d="M98 116H158"/><path d="M98 140H158"/>
+<path d="M80 106V150"/><path d="M176 106V150"/>
+</g></svg>

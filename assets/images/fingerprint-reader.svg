@@ -1,0 +1,12 @@
+<svg width="256" height="256" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg">
+<title>Fingerprint Reader</title><desc>Thin outline icon for biometric fingerprint reader.</desc>
+<g stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+<rect x="48" y="48" width="160" height="160" rx="18"/>
+<path d="M128 88C105 88 88 105 88 128"/>
+<path d="M168 128C168 105 151 88 128 88"/>
+<path d="M104 132C104 119 115 108 128 108C141 108 152 119 152 132"/>
+<path d="M116 164C124 171 132 171 140 164"/>
+<path d="M96 144C96 162 102 177 114 188"/>
+<path d="M160 144C160 162 154 177 142 188"/>
+<path d="M128 120V156"/>
+</g></svg>
