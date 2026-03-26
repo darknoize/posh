@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contact POSCH</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css" />
+  <script id="theme-init">(function(){try{var saved=localStorage.getItem("posch-theme");var theme=saved||"dark";document.documentElement.setAttribute("data-theme",theme);}catch(e){document.documentElement.setAttribute("data-theme","dark");}})();</script>
+</head>
+<body>
+  <header class="site-header inner-header">
+    <div class="shell nav-wrap glass">
+      <a class="brand" href="index.html"><span class="brand-mark"></span><span class="brand-text">POSCH</span></a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav"><span></span><span></span><span></span></button>
+      <nav id="site-nav" class="site-nav">
+        <a href="index.html">Home</a>
+        <a href="about.html">About Us</a>
+        <a href="products.html">Products</a>
+        <a href="downloads.html">Downloads</a>
+        <a href="contact.html" class="active">Contact Us</a>
+        <div class="theme-switcher" role="group" aria-label="Theme switcher">
+          <button class="theme-option" type="button" data-theme-value="dark" aria-pressed="false">Dark</button>
+          <button class="theme-option" type="button" data-theme-value="light" aria-pressed="false">Light</button>
+        </div>
+        <a class="button button-light" href="#inquiry">Request Consultation</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="page-main">
+    <section class="page-hero page-hero-compact">
+      <div class="page-hero-media"><img src="assets/images/desk-ui.png" alt="Control workstation environment" /></div>
+      <div class="page-overlay"></div>
+      <div class="shell page-content">
+        <div class="eyebrow">Contact Us</div>
+        <h1>Talk with POSCH about modular access and identity systems.</h1>
+        <p>Use this page as the foundation for production contact workflows, lead routing, or distributor inquiries.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="shell contact-grid">
+        <article class="glass info-card">
+          <h2>Contact Information</h2>
+          <p>POSCH MFG LTD.<br/>20 McKean Way<br/>Spruce Grove, AB, Canada T7X 2R7</p>
+          <p><a href="tel:+16045965200">Phone: (604) 596-5200</a><br/><a href="tel:+18882827674">Toll free: 1 (888) 282-7674</a></p>
+          <p><a href="mailto:info@posch.example">info@posch.example</a></p>
+        </article>
+
+        <form id="inquiry" class="glass contact-form">
+          <h2>Request Consultation</h2>
+          <div class="form-grid">
+            <label><span>Name</span><input type="text" placeholder="Your name" /></label>
+            <label><span>Company</span><input type="text" placeholder="Company or organization" /></label>
+            <label><span>Email</span><input type="email" placeholder="Email address" /></label>
+            <label><span>Phone</span><input type="text" placeholder="Phone number" /></label>
+            <label class="full"><span>Project type</span><select><option>Access control</option><option>Credential validation</option><option>Custom integration</option><option>General inquiry</option></select></label>
+            <label class="full"><span>Message</span><textarea rows="6" placeholder="Tell us about your environment, volume, and integration needs."></textarea></label>
+          </div>
+          <button type="submit" class="button button-light">Send Inquiry</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="shell footer-bottom">© 2026 POSCH. All rights reserved.</div>
+  </footer>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
