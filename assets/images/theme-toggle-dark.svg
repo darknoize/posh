@@ -1,0 +1,12 @@
+<svg width="256" height="256" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg">
+<title>Theme Toggle Dark</title>
+<desc>Thin outline icon for switching from light mode to dark mode.</desc>
+<g stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M152.5 44C123.5 48 100 73 100 104C100 138.2 127.8 166 162 166C183.1 166 201.7 155.4 213 139.2C208.3 177.7 175.5 207.5 136 207.5C93.3 207.5 58.5 172.7 58.5 130C58.5 89.3 90 55.9 130 52.8"/>
+  <circle cx="186" cy="78" r="10"/>
+  <path d="M186 56V48"/>
+  <path d="M186 108V100"/>
+  <path d="M208 78H216"/>
+  <path d="M156 78H164"/>
+</g>
+</svg>

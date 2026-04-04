@@ -20,7 +20,13 @@ const setTheme = (theme) => {
   });
 };
 if (themeButtons.length) {
-  const initialTheme = root.getAttribute('data-theme') || 'dark';
+  let initialTheme = root.getAttribute('data-theme') || 'dark';
+  try {
+    const savedTheme = localStorage.getItem('posch-theme');
+    if (savedTheme) {
+      initialTheme = savedTheme;
+    }
+  } catch (e) {}
   setTheme(initialTheme);
   themeButtons.forEach((button) => {
     button.addEventListener('click', () => setTheme(button.getAttribute('data-theme-value')));
