@@ -101,6 +101,7 @@ const products = [
 ];
 
 const mainSlideImage = document.getElementById('mainSlideImage');
+const mainSlideImageLight = document.getElementById('mainSlideImageLight');
 const slideTitle = document.getElementById('slideTitle');
 const slideSubtitle = document.getElementById('slideSubtitle');
 const slideIndex = document.getElementById('slideIndex');
@@ -178,16 +179,28 @@ function syncThumbsToTheme() {
   });
 }
 
-function animateMainImage(newSrc, newAlt, directionClass) {
+function animateMainImage(product, directionClass) {
   mainSlideImage.classList.remove('is-changing-left', 'is-changing-right');
+  mainSlideImageLight.classList.remove('is-changing-left', 'is-changing-right');
+  
   if (directionClass) {
     mainSlideImage.classList.add(directionClass);
+    mainSlideImageLight.classList.add(directionClass);
   }
 
   setTimeout(() => {
-    mainSlideImage.src = newSrc;
-    mainSlideImage.alt = newAlt;
+    mainSlideImage.src = product.image;
+    mainSlideImage.alt = product.title;
+    mainSlideImage.dataset.fallback = product.image;
+    
+    if (product.imageLight) {
+      mainSlideImageLight.src = product.imageLight;
+      mainSlideImageLight.alt = product.title;
+      mainSlideImageLight.dataset.fallback = product.image;
+    }
+    
     mainSlideImage.classList.remove('is-changing-left', 'is-changing-right');
+    mainSlideImageLight.classList.remove('is-changing-left', 'is-changing-right');
   }, 160);
 }
 
@@ -195,10 +208,15 @@ function syncCurrentSlideImageToTheme() {
   const product = products[currentIndex];
   if (!product) return;
 
-  const nextSource = getImageSource(product);
-  mainSlideImage.dataset.fallback = product.image;
-  mainSlideImage.src = nextSource;
+  mainSlideImage.src = product.image;
   mainSlideImage.alt = product.title;
+  mainSlideImage.dataset.fallback = product.image;
+  
+  if (product.imageLight) {
+    mainSlideImageLight.src = product.imageLight;
+    mainSlideImageLight.alt = product.title;
+    mainSlideImageLight.dataset.fallback = product.image;
+  }
 }
 
 function centerActiveThumb(activeThumb) {
@@ -229,9 +247,10 @@ function updateSlide(index, direction = 'next') {
   detailDescription.textContent = product.description;
 
   mainSlideImage.classList.toggle('is-first-slide', currentIndex === 0);
+  mainSlideImageLight.classList.toggle('is-first-slide', currentIndex === 0);
   mainSlideImage.dataset.fallback = product.image;
 
-  animateMainImage(imageSource, product.title, imageDirectionClass);
+  animateMainImage(product, imageDirectionClass);
 
   document.querySelectorAll('.thumb').forEach((thumb, idx) => {
     thumb.classList.toggle('active', idx === currentIndex);
@@ -259,6 +278,16 @@ mainSlideImage.addEventListener('error', () => {
   const fallbackUrl = new URL(fallback, window.location.href).href;
   if (mainSlideImage.src !== fallbackUrl) {
     mainSlideImage.src = fallback;
+  }
+});
+
+mainSlideImageLight.addEventListener('error', () => {
+  const fallback = mainSlideImageLight.dataset.fallback;
+  if (!fallback) return;
+
+  const fallbackUrl = new URL(fallback, window.location.href).href;
+  if (mainSlideImageLight.src !== fallbackUrl) {
+    mainSlideImageLight.src = fallback;
   }
 });
 

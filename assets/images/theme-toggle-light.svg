@@ -1,16 +1,27 @@
-<svg width="256" height="256" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg">
-<title>Theme Toggle Light</title>
-<desc>Thin outline icon for switching from dark mode to light mode.</desc>
-<g stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
-  <circle cx="128" cy="128" r="34"/>
-  <path d="M128 42V62"/>
-  <path d="M128 194V214"/>
-  <path d="M42 128H62"/>
-  <path d="M194 128H214"/>
-  <path d="M67.2 67.2L81.4 81.4"/>
-  <path d="M174.6 174.6L188.8 188.8"/>
-  <path d="M188.8 67.2L174.6 81.4"/>
-  <path d="M81.4 174.6L67.2 188.8"/>
-  <circle cx="128" cy="128" r="52" opacity="0.35"/>
-</g>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 256 256">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #fff;
+        isolation: isolate;
+      }
+    </style>
+  </defs>
+  <!-- Generator: Adobe Illustrator 28.7.10, SVG Export Plug-In . SVG Version: 1.2.0 Build 236)  -->
+  <g>
+    <g id="Layer_1">
+      <g>
+        <path class="cls-1" d="M128,67c2.8,0,5-2.2,5-5v-20c0-2.8-2.2-5-5-5s-5,2.2-5,5v20c0,2.8,2.2,5,5,5Z"/>
+        <path class="cls-1" d="M128,189c-2.8,0-5,2.2-5,5v20c0,2.8,2.2,5,5,5s5-2.2,5-5v-20c0-2.8-2.2-5-5-5Z"/>
+        <path class="cls-1" d="M67,128c0-2.8-2.2-5-5-5h-20c-2.8,0-5,2.2-5,5s2.2,5,5,5h20c2.8,0,5-2.2,5-5Z"/>
+        <path class="cls-1" d="M214,123h-20c-2.8,0-5,2.2-5,5s2.2,5,5,5h20c2.8,0,5-2.2,5-5s-2.2-5-5-5Z"/>
+        <path class="cls-1" d="M77.9,84.9c1,1,2.3,1.5,3.5,1.5s2.6-.5,3.5-1.5c2-2,2-5.1,0-7.1l-14.2-14.2c-2-2-5.1-2-7.1,0-2,2-2,5.1,0,7.1l14.2,14.2h0Z"/>
+        <path class="cls-1" d="M178.1,171.1c-2-2-5.1-2-7.1,0s-2,5.1,0,7.1l14.2,14.2c1,1,2.3,1.5,3.5,1.5s2.6-.5,3.5-1.5c2-2,2-5.1,0-7.1l-14.2-14.2h.1Z"/>
+        <path class="cls-1" d="M174.6,86.4c1.3,0,2.6-.5,3.5-1.5l14.2-14.2c2-2,2-5.1,0-7.1s-5.1-2-7.1,0l-14.2,14.2c-2,2-2,5.1,0,7.1s2.3,1.5,3.5,1.5h.1Z"/>
+        <path class="cls-1" d="M77.9,171.1l-14.2,14.2c-2,2-2,5.1,0,7.1,1,1,2.3,1.5,3.5,1.5s2.6-.5,3.5-1.5l14.2-14.2c2-2,2-5.1,0-7.1s-5.1-2-7.1,0h.1Z"/>
+        <path class="cls-1" d="M128,76c-28.7,0-52,23.3-52,52s23.3,52,52,52,52-23.3,52-52-23.3-52-52-52ZM128,162c-18.8,0-34-15.2-34-34s15.2-34,34-34,34,15.2,34,34-15.2,34-34,34Z"/>
+      </g>
+    </g>
+  </g>
 </svg>

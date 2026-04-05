@@ -37,24 +37,36 @@ button { font: inherit; }
 
 .page-header {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   gap: 28px;
-  align-items: end;
+  align-items: center;
+  text-align: center;
   margin-bottom: 18px;
 }
 
 .eyebrow {
-  margin: 0 0 8px;
-  color: #91a2cb;
-  letter-spacing: 0.16em;
-  font-size: 12px;
+  margin: 0 0 16px;
+  color: #ffffff;
+  letter-spacing: 0.18em;
+  font-size: 0.92rem;
+  font-weight: 500;
   text-transform: uppercase;
+}
+
+.eyebrow-brand {
+  letter-spacing: 0.18em;
 }
 
 h1 {
   margin: 0;
-  font-size: clamp(26px, 3vw, 42px);
-  line-height: 1.04;
+  font-size: clamp(2.2rem, 4.5vw, 4.2rem);
+  line-height: 1.08;
+  font-weight: 400;
+  letter-spacing: 1px;
+  color: var(--button-primary);
+}
+
+html[data-theme="light"] .eyebrow {
   color: var(--button-primary);
 }
 
@@ -127,6 +139,7 @@ h1 {
   border-radius: 24px;
   overflow: hidden;
   background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.03));
+  border: 1px solid rgba(255,255,255,0.08);
   min-height: clamp(260px, 42vw, 520px);
   display: flex;
   align-items: center;
@@ -157,6 +170,10 @@ h1 {
 #mainSlideImage.is-first-slide {
   border-radius: 24px;
 }
+
+.slide-image-light { display: none; }
+html[data-theme="light"] .slide-image-dark { display: none; }
+html[data-theme="light"] .slide-image-light { display: block; }
 
 .stage-figure img.is-changing-left {
   opacity: 0;
@@ -336,6 +353,7 @@ html[data-theme="light"] .stage-count {
 
 html[data-theme="light"] .stage-viewer {
   background: linear-gradient(180deg, rgba(13, 22, 38, 0.02), rgba(13, 22, 38, 0.03));
+  border-color: rgba(13, 22, 38, 0.10);
 }
 
 html[data-theme="light"] .stage-detail {

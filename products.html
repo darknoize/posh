@@ -13,12 +13,12 @@
 <body>
   <header class="site-header inner-header">
     <div class="shell nav-wrap glass">
-      <a class="brand" href="index.html"><span class="brand-mark"></span><span class="brand-text">POSH</span></a>
+      <a class="brand brand-image" href="index.html" aria-label="POSH home"><img class="brand-logo brand-logo-dark" src="assets/images/Poshlogo_sm-dark.png" alt="POSH" /><img class="brand-logo brand-logo-light" src="assets/images/Poshlogo_sm-light.png" alt="POSH" /></a>
       <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav"><span></span><span></span><span></span></button>
       <nav id="site-nav" class="site-nav">
         <a href="index.html">Home</a>
         <a href="about.html">About Us</a>
-        <a href="posh-gallery/index.html">Products</a>
+        <a href="products.html" class="active">Products</a>
         <a href="downloads.html">Downloads</a>
         <a href="contact.html">Contact Us</a>
         <div class="theme-switcher" role="group" aria-label="Theme switcher">
@@ -38,6 +38,36 @@
         <div class="eyebrow">Our Products</div>
         <h1>Modular devices for identity, access, and secure interaction.</h1>
         <p>Explore POSH device platforms built for secure access, identity validation, and scalable field deployment.</p>
+        <div class="product-hero-links" aria-label="Product quick links">
+          <a class="product-gallery-bubble" href="posh-gallery/index.html" aria-label="Open Product Gallery">
+            <span class="product-gallery-bubble-media">
+              <img class="product-gallery-thumb product-gallery-thumb-dark" src="posh-gallery/assets/hero-overview.png" alt="Product Gallery preview" />
+              <img class="product-gallery-thumb product-gallery-thumb-light" src="posh-gallery/assets/hero-overview-light.png" alt="Product Gallery preview" />
+            </span>
+            <span class="product-gallery-bubble-copy">
+              <strong>Product Gallery</strong>
+              <small>Open interactive gallery</small>
+            </span>
+          </a>
+          <a class="product-gallery-bubble" href="#build-your-own" aria-label="Go to Build Your Own">
+            <span class="product-gallery-bubble-media">
+              <span class="product-gallery-placeholder-thumb product-gallery-placeholder-build">Build</span>
+            </span>
+            <span class="product-gallery-bubble-copy">
+              <strong>Build Your Own</strong>
+              <small>Jump to custom options</small>
+            </span>
+          </a>
+          <a class="product-gallery-bubble" href="#use-cases" aria-label="Go to Use Cases">
+            <span class="product-gallery-bubble-media">
+              <span class="product-gallery-placeholder-thumb product-gallery-placeholder-usecase">Use Cases</span>
+            </span>
+            <span class="product-gallery-bubble-copy">
+              <strong>Use Cases</strong>
+              <small>Jump to placeholder scenarios</small>
+            </span>
+          </a>
+        </div>
       </div>
     </section>
 
@@ -48,12 +78,22 @@
           <p>Search by device type, credential technology, and deployment requirements.</p>
         </div>
         <div class="search-shell">
-          <input type="text" placeholder="Search products..." aria-label="Search products" />
+          <div class="search-input-wrap">
+            <input id="productSearchInput" type="text" placeholder="Search products..." aria-label="Search products" autocomplete="off" />
+            <svg class="search-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <circle cx="11" cy="11" r="6" fill="none" stroke="currentColor" stroke-width="2"></circle>
+              <line x1="16" y1="16" x2="21" y2="21" stroke="currentColor" stroke-width="2" stroke-linecap="round"></line>
+            </svg>
+          </div>
+          <button id="productSearchClear" class="search-clear" type="button" aria-label="Clear product search" hidden>Clear</button>
         </div>
       </div>
     </section>
 
-    <section class="section">
+    <section class="section product-cards-section">
+      <div class="shell">
+        <h2 class="product-grid-title">Product Configurations</h2>
+      </div>
       <div class="shell product-grid">
         <article class="product-card glass" id="mx5c">
           <div class="product-visual gradient-purple"></div>
@@ -68,31 +108,37 @@
           </div>
         </article>
 
-        <article class="product-card glass" id="k9jr">
+        <article class="product-card glass" id="build-your-own">
           <div class="product-visual gradient-blue"></div>
           <div class="product-body">
-            <span class="product-code">K9Jr-BT-2DW</span>
-            <h2>Compact Bluetooth security endpoint</h2>
-            <p>Small-footprint modular device suited for wireless workflows, modern peripheral communication, and adaptable deployments.</p>
+            <span class="product-code">Build Your Own</span>
+            <h2>Configure a custom POSH endpoint</h2>
+            <p>Choose credential technologies, form factors, and deployment features to model your ideal access device stack.</p>
             <div class="spec-list">
-              <span>Bluetooth</span><span>Barcode</span><span>RFID</span><span>Compact</span>
+              <span>RFID</span><span>Biometric</span><span>Barcode</span><span>Wireless</span>
             </div>
-            <a class="text-link" href="contact.html#inquiry">Request deployment details</a>
+            <a class="text-link" href="contact.html#inquiry">Start custom configuration</a>
           </div>
         </article>
 
-        <article class="product-card glass">
+        <article class="product-card glass" id="use-cases">
           <div class="product-visual gradient-slate"></div>
           <div class="product-body">
-            <span class="product-code">POS100 Legacy</span>
-            <h2>Baseline cash drawer control device</h2>
-            <p>A nod to the company's early product history and the progression toward broader security hardware systems.</p>
-            <div class="spec-list">
-              <span>Legacy</span><span>Reliable</span><span>Field proven</span>
+            <span class="product-code">Use Cases</span>
+            <h2>Deployment scenario placeholders</h2>
+            <p>Thumbnail placeholders for vertical-specific examples. Replace with your real use-case imagery when ready.</p>
+            <div class="usecase-placeholder-grid" aria-label="Use case image placeholders">
+              <span class="usecase-placeholder-thumb">Placeholder A</span>
+              <span class="usecase-placeholder-thumb">Placeholder B</span>
+              <span class="usecase-placeholder-thumb">Placeholder C</span>
+              <span class="usecase-placeholder-thumb">Placeholder D</span>
             </div>
-            <a class="text-link" href="about.html">Read the company story</a>
+            <a class="text-link" href="contact.html#inquiry">Map a use-case workflow</a>
           </div>
         </article>
+      </div>
+      <div class="shell">
+        <p class="search-empty glass" id="productSearchEmpty" hidden>No products matched your search. Try another keyword.</p>
       </div>
     </section>
   </main>

@@ -14,9 +14,9 @@
 <body>
   <header class="site-header">
     <div class="shell nav-wrap glass">
-      <a class="brand" href="../index.html" aria-label="POSH home">
-        <span class="brand-mark"></span>
-        <span class="brand-text">POSH</span>
+      <a class="brand brand-image" href="../index.html" aria-label="POSH home">
+        <img class="brand-logo brand-logo-dark" src="../assets/images/Poshlogo_sm-dark.png" alt="POSH" />
+        <img class="brand-logo brand-logo-light" src="../assets/images/Poshlogo_sm-light.png" alt="POSH" />
       </a>
 
       <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">
@@ -26,7 +26,7 @@
       <nav id="site-nav" class="site-nav">
         <a href="../index.html">Home</a>
         <a href="../about.html">About Us</a>
-        <a href="index.html" class="active">Products</a>
+        <a href="../products.html">Products</a>
         <a href="../downloads.html">Downloads</a>
         <a href="../contact.html">Contact Us</a>
         <div class="theme-switcher" role="group" aria-label="Theme switcher">
@@ -45,10 +45,9 @@
   <div class="page-shell">
     <header class="page-header">
       <div>
-        <p class="eyebrow">POSHMFG</p>
-        <h1>Interactive Product Gallery</h1>
+        <p class="eyebrow eyebrow-brand">POSH MFG</p>
+        <h1>Product Gallery</h1>
       </div>
-      <p class="intro">Main slide, clickable product thumbnails, previous and next navigation, and a synchronized product detail view.</p>
     </header>
 
     <main class="gallery-layout">
@@ -65,7 +64,8 @@
           <div class="stage-viewer">
             <button class="nav-arrow prev" id="prevBtn" aria-label="Previous slide">&#10094;</button>
             <figure class="stage-figure">
-              <img id="mainSlideImage" src="assets/hero-overview.png" alt="POSHMFG product overview" />
+              <img id="mainSlideImage" class="slide-image slide-image-dark" src="assets/hero-overview.png" alt="POSHMFG product overview" />
+              <img id="mainSlideImageLight" class="slide-image slide-image-light" src="assets/hero-overview-light.png" alt="POSHMFG product overview" />
             </figure>
             <button class="nav-arrow next" id="nextBtn" aria-label="Next slide">&#10095;</button>
           </div>
