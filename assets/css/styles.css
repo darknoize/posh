@@ -797,7 +797,7 @@ html[data-theme="light"] .tech-icon {
 .theme-option {
   appearance: none;
   border: 0;
-  background: rgba(255,255,255,0.10);
+  background: transparent;
   color: var(--button-primary);
   width: 34px;
   height: 34px;
@@ -809,50 +809,24 @@ html[data-theme="light"] .tech-icon {
   align-items: center;
   justify-content: center;
 }
-.theme-option::before {
-  content: "";
-  width: 18px;
-  height: 18px;
-  display: block;
-  background-color: var(--button-primary);
-  -webkit-mask-repeat: no-repeat;
-  -webkit-mask-position: center;
-  -webkit-mask-size: contain;
-  mask-repeat: no-repeat;
-  mask-position: center;
-  mask-size: contain;
-}
-.theme-option[data-theme-value="dark"]::before {
-  -webkit-mask-image: url("../images/theme-toggle-dark.svg");
-  mask-image: url("../images/theme-toggle-dark.svg");
-}
-.theme-option[data-theme-value="light"]::before {
-  -webkit-mask-image: url("../images/theme-toggle-light.svg");
-  mask-image: url("../images/theme-toggle-light.svg");
-}
 .theme-icon {
   width: 18px;
   height: 18px;
-  display: none;
+  display: block;
 }
 .theme-option.is-active {
-  color: #f6f8fc;
-  background: var(--button-primary);
-}
-.theme-option.is-active::before {
-  background-color: #f6f8fc;
+  background: rgba(255,255,255,0.14);
 }
 html[data-theme="light"] .theme-switcher {
   background: rgba(13,22,38,0.03);
   border-color: rgba(13,22,38,0.08);
 }
 html[data-theme="light"] .theme-option {
-  background: rgba(13,22,38,0.08);
+  background: transparent;
   color: var(--button-primary);
 }
 html[data-theme="light"] .theme-option.is-active {
-  color: #f6f8fc;
-  background: var(--button-primary);
+  background: rgba(13,22,38,0.12);
 }
 html[data-theme="light"] .top-rail {
   background: rgba(245,248,252,0.88);

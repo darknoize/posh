@@ -10,6 +10,23 @@ if (toggle && nav) {
 
 const themeButtons = document.querySelectorAll('[data-theme-value]');
 const root = document.documentElement;
+const updateThemeIconState = (button, isActive) => {
+  const icon = button.querySelector('.theme-icon');
+  if (!icon) return;
+
+  const iconSource = icon.getAttribute('src');
+  if (!iconSource) return;
+
+  const normalizedSource = iconSource.replace('-active.svg', '.svg');
+  const nextSource = isActive
+    ? normalizedSource.replace('.svg', '-active.svg')
+    : normalizedSource;
+
+  if (icon.getAttribute('src') !== nextSource) {
+    icon.setAttribute('src', nextSource);
+  }
+};
+
 const setTheme = (theme) => {
   root.setAttribute('data-theme', theme);
   try { localStorage.setItem('posch-theme', theme); } catch (e) {}
@@ -17,6 +34,7 @@ const setTheme = (theme) => {
     const isActive = button.getAttribute('data-theme-value') === theme;
     button.classList.toggle('is-active', isActive);
     button.setAttribute('aria-pressed', String(isActive));
+    updateThemeIconState(button, isActive);
   });
 };
 if (themeButtons.length) {
