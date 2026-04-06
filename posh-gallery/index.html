@@ -24,20 +24,25 @@
       </button>
 
       <nav id="site-nav" class="site-nav">
-        <a href="../index.html">Home</a>
-        <a href="../about.html">About Us</a>
-        <a href="../products.html">Products</a>
-        <a href="../downloads.html">Downloads</a>
-        <a href="../contact.html">Contact Us</a>
-        <div class="theme-switcher" role="group" aria-label="Theme switcher">
-          <button class="theme-option" type="button" data-theme-value="dark" aria-pressed="false" aria-label="Dark theme">
-            <img src="../assets/images/theme-toggle-dark.svg" alt="" class="theme-icon" />
-          </button>
-          <button class="theme-option" type="button" data-theme-value="light" aria-pressed="false" aria-label="Light theme">
-            <img src="../assets/images/theme-toggle-light.svg" alt="" class="theme-icon" />
-          </button>
+        <div class="nav-links">
+          <a href="../index.html">Home</a>
+          <a href="../about.html">About Us</a>
+          <a href="../products.html" class="active">Products</a>
+          <a href="../use-cases.html">Use Cases</a>
+          <a href="../downloads.html">Downloads</a>
+          <a href="../contact.html">Contact Us</a>
         </div>
-        <a class="button button-light" href="../contact.html#inquiry">Request Consultation</a>
+        <div class="nav-actions">
+          <div class="theme-switcher" role="group" aria-label="Theme switcher">
+            <button class="theme-option" type="button" data-theme-value="dark" aria-pressed="false" aria-label="Dark theme">
+              <img src="../assets/images/theme-toggle-dark.svg" alt="" class="theme-icon" />
+            </button>
+            <button class="theme-option" type="button" data-theme-value="light" aria-pressed="false" aria-label="Light theme">
+              <img src="../assets/images/theme-toggle-light.svg" alt="" class="theme-icon" />
+            </button>
+          </div>
+          <a class="button button-light" href="../contact.html#inquiry">Request Consultation</a>
+        </div>
       </nav>
     </div>
   </header>
@@ -57,7 +62,14 @@
             <h2 id="slideTitle">MX Platform Product Family</h2>
             <p id="slideSubtitle">Multi-format variants built around the same core architecture.</p>
           </div>
-          <div class="stage-count"><span id="slideIndex">1</span> / <span id="slideTotal">1</span></div>
+          <div class="stage-top-controls">
+            <label class="gallery-search" for="gallerySearchInput">
+              <input id="gallerySearchInput" type="text" placeholder="Search by device, term, or metric" autocomplete="off" />
+              <button id="gallerySearchClear" type="button" aria-label="Clear gallery search" hidden>Clear</button>
+            </label>
+            <p class="gallery-search-meta" id="gallerySearchMeta" aria-live="polite"></p>
+            <div class="stage-count"><span id="slideIndex">1</span> / <span id="slideTotal">1</span></div>
+          </div>
         </div>
 
         <div class="stage-main">
@@ -74,9 +86,10 @@
             <p class="detail-label">Selected Product</p>
             <h3 id="detailTitle">MX5P3-SC-M2-FP</h3>
             <p class="detail-subtitle" id="detailSubtitle">Core multi-format platform</p>
-            <p class="detail-description" id="detailDescription">
-              This active product view is tied to the gallery above. Selecting any thumbnail updates the primary image, title, subtitle, and long-form description in this detail panel.
-            </p>
+            <ul class="detail-description" id="detailDescription">
+              <li>This active product view is tied to the gallery above.</li>
+              <li>Selecting any thumbnail updates the primary image, title, subtitle, and long-form details in this panel.</li>
+            </ul>
           </aside>
         </div>
 

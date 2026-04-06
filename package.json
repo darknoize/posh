@@ -1,0 +1,9 @@
+{
+  "name": "posh-site",
+  "private": true,
+  "version": "1.0.0",
+  "description": "POSH static site with secure quick-message API",
+  "dependencies": {
+    "nodemailer": "^6.9.16"
+  }
+}

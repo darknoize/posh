@@ -127,6 +127,56 @@ html[data-theme="light"] .eyebrow {
   font-weight: 600;
 }
 
+.stage-top-controls {
+  min-width: min(360px, 100%);
+  display: grid;
+  gap: 8px;
+}
+
+.gallery-search {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 12px;
+  background: rgba(255,255,255,0.03);
+  padding: 6px;
+}
+
+.gallery-search input {
+  width: 100%;
+  border: none;
+  background: transparent;
+  color: var(--gallery-text);
+  font: inherit;
+  outline: none;
+  padding: 6px 8px;
+}
+
+.gallery-search input::placeholder {
+  color: var(--gallery-muted);
+}
+
+#gallerySearchClear {
+  border: 1px solid rgba(255,255,255,0.14);
+  background: rgba(255,255,255,0.04);
+  color: var(--gallery-text);
+  border-radius: 9px;
+  padding: 6px 10px;
+  cursor: pointer;
+}
+
+#gallerySearchClear:hover {
+  background: rgba(255,255,255,0.1);
+}
+
+.gallery-search-meta {
+  margin: 0;
+  color: var(--gallery-muted);
+  font-size: 0.84rem;
+}
+
 .stage-main {
   display: grid;
   grid-template-columns: minmax(0, 2fr) minmax(280px, 1fr);
@@ -187,6 +237,7 @@ html[data-theme="light"] .slide-image-light { display: block; }
 
 .stage-detail {
   min-height: clamp(260px, 42vw, 520px);
+  height: clamp(260px, 42vw, 520px);
   border-radius: 24px;
   background:
     radial-gradient(circle at top, rgba(108, 99, 255, 0.14), transparent 44%),
@@ -195,7 +246,31 @@ html[data-theme="light"] .slide-image-light { display: block; }
   padding: clamp(18px, 2vw, 26px);
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scrollbar-color: var(--gallery-scrollbar-thumb) var(--gallery-scrollbar-track);
+}
+
+.stage-detail::-webkit-scrollbar {
+  width: 10px;
+}
+
+.stage-detail::-webkit-scrollbar-track {
+  background: var(--gallery-scrollbar-track);
+  border-radius: 999px;
+}
+
+.stage-detail::-webkit-scrollbar-thumb {
+  background: var(--gallery-scrollbar-thumb);
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.06);
+}
+
+.stage-detail::-webkit-scrollbar-thumb:hover {
+  background: var(--gallery-scrollbar-thumb-hover);
 }
 
 .nav-arrow {
@@ -336,15 +411,29 @@ html[data-theme="light"] .slide-image-light { display: block; }
 
 .detail-subtitle {
   margin: 12px 0 16px;
-  color: #c7d2eb;
+  color: var(--button-primary);
   font-size: clamp(16px, 1.3vw, 18px);
 }
 
 .detail-description {
   margin: 0;
+  padding-left: 18px;
   color: var(--gallery-muted);
-  line-height: 1.75;
+  line-height: 1.6;
   font-size: clamp(14px, 1.05vw, 15px);
+}
+
+.detail-description li {
+  margin: 0 0 10px;
+}
+
+.detail-description li:last-child {
+  margin-bottom: 0;
+}
+
+.detail-description strong {
+  color: var(--gallery-text);
+  font-weight: 700;
 }
 
 html[data-theme="light"] .stage-count {
@@ -378,6 +467,16 @@ html[data-theme="light"] .thumb.active {
   background: rgba(6, 134, 249, 0.08);
 }
 
+html[data-theme="light"] .gallery-search {
+  border-color: rgba(13, 22, 38, 0.14);
+  background: rgba(13, 22, 38, 0.03);
+}
+
+html[data-theme="light"] #gallerySearchClear {
+  border-color: rgba(13, 22, 38, 0.14);
+  background: rgba(13, 22, 38, 0.06);
+}
+
 html[data-theme="light"] .thumb-image {
   background: linear-gradient(180deg, rgba(13, 22, 38, 0.02), rgba(13, 22, 38, 0.06));
 }
@@ -387,7 +486,7 @@ html[data-theme="light"] .detail-label {
 }
 
 html[data-theme="light"] .detail-subtitle {
-  color: #344761;
+  color: var(--button-primary);
 }
 
 @media (max-width: 1024px) {
@@ -399,6 +498,10 @@ html[data-theme="light"] .detail-subtitle {
   .stage-figure,
   .stage-detail {
     min-height: clamp(240px, 40vw, 440px);
+  }
+
+  .stage-detail {
+    height: clamp(240px, 40vw, 440px);
   }
 }
 
@@ -438,13 +541,19 @@ html[data-theme="light"] .detail-subtitle {
     gap: 8px;
   }
 
+  .stage-top-controls {
+    width: 100%;
+    min-width: 0;
+  }
+
   .stage-count {
     min-width: 0;
     text-align: left;
   }
 
   .stage-detail {
-    min-height: auto;
+    min-height: clamp(220px, 52vw, 360px);
+    height: clamp(220px, 52vw, 360px);
   }
 
   .thumb-track {
@@ -473,6 +582,8 @@ html[data-theme="light"] .detail-subtitle {
 
   .stage-detail {
     padding: 16px;
+    min-height: clamp(200px, 56vw, 300px);
+    height: clamp(200px, 56vw, 300px);
   }
 
   .thumb-track {
