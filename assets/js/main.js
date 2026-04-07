@@ -61,29 +61,6 @@ document.querySelectorAll('form').forEach(form => {
   });
 });
 
-const topRail = document.querySelector('.top-rail-highlight');
-const topRailClose = document.querySelector('[data-top-rail-close]');
-if (topRail && topRailClose) {
-  const hiddenClass = 'home-rail-hidden';
-  const storageKey = 'posh-home-rail-hidden';
-
-  let isHidden = false;
-  try {
-    isHidden = localStorage.getItem(storageKey) === '1';
-  } catch (e) {}
-
-  if (isHidden) {
-    document.body.classList.add(hiddenClass);
-  }
-
-  topRailClose.addEventListener('click', () => {
-    document.body.classList.add(hiddenClass);
-    try {
-      localStorage.setItem(storageKey, '1');
-    } catch (e) {}
-  });
-}
-
 function initProductSearch() {
   const input = document.getElementById('productSearchInput');
   const clearButton = document.getElementById('productSearchClear');
