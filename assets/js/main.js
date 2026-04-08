@@ -83,14 +83,26 @@ function initProductSearch() {
     return;
   }
 
-  // Extract product names for suggestions
-  const productNames = cards.map((card) => {
-    const title = card.querySelector('h2')?.textContent || '';
-    const code = card.querySelector('.product-code')?.textContent || '';
-    return { title: title.trim(), code: code.trim(), card };
-  }).filter(p => p.title || p.code);
+  // Collect core product data from the interactive network hotspots
+  const hotspotItems = Array.from(document.querySelectorAll('.core-network-hotspot[data-core-product]')).map((hotspot) => ({
+    slug: hotspot.dataset.coreProduct,
+    title: hotspot.querySelector('.core-network-hotspot-title')?.textContent?.trim() || '',
+    sub: hotspot.querySelector('.core-network-hotspot-sub')?.textContent?.trim() || '',
+    href: hotspot.getAttribute('href') || '',
+    img: hotspot.querySelector('img')?.getAttribute('src') || ''
+  }));
 
-  const searchIndex = cards.map((card) => {
+  // Extract product names for suggestions (cards + core products)
+  const productNames = [
+    ...cards.map((card) => {
+      const title = card.querySelector('h2')?.textContent || '';
+      const code = card.querySelector('.product-code')?.textContent || '';
+      return { title: title.trim(), code: code.trim(), card, type: 'card' };
+    }).filter(p => p.title || p.code),
+    ...hotspotItems.map(h => ({ title: h.title, code: h.title, sub: h.sub, href: h.href, type: 'core' }))
+  ];
+
+  const cardSearchIndex = cards.map((card) => {
     const code = card.querySelector('.product-code')?.textContent || '';
     const title = card.querySelector('h2')?.textContent || '';
     const description = card.querySelector('p')?.textContent || '';
@@ -100,16 +112,47 @@ function initProductSearch() {
     return `${idText} ${code} ${title} ${description} ${specs} ${linkText}`.toLowerCase();
   });
 
+  const hotspotSearchIndex = hotspotItems.map(h =>
+    `${h.slug} ${h.title} ${h.sub}`.toLowerCase()
+  );
+
+  const buildHotspotCard = (item) => {
+    const a = document.createElement('a');
+    a.className = 'product-card glass product-card-core';
+    a.href = item.href;
+    const visual = document.createElement('div');
+    visual.className = 'product-visual';
+    if (item.img) {
+      const img = document.createElement('img');
+      img.src = item.img;
+      img.alt = item.title;
+      img.style.cssText = 'width:100%;height:100%;object-fit:contain;padding:12px;';
+      visual.appendChild(img);
+    }
+    const body = document.createElement('div');
+    body.className = 'product-body';
+    body.innerHTML = `<span class="product-code">${item.title}</span><h2>${item.sub}</h2><span class="text-link">View product →</span>`;
+    a.appendChild(visual);
+    a.appendChild(body);
+    return a;
+  };
+
   const applyFilter = (rawQuery, syncUrl = true) => {
     const query = rawQuery.trim().toLowerCase();
     const matchedCards = [];
+    const matchedHotspots = [];
     let visibleCount = 0;
 
     if (query) {
       cards.forEach((card, index) => {
-        const matches = searchIndex[index].includes(query);
-        if (matches) {
+        if (cardSearchIndex[index].includes(query)) {
           matchedCards.push(card);
+          visibleCount++;
+        }
+      });
+      hotspotItems.forEach((item, index) => {
+        if (hotspotSearchIndex[index].includes(query)) {
+          matchedHotspots.push(item);
           visibleCount++;
         }
       });
@@ -117,28 +160,25 @@ function initProductSearch() {
 
     if (query && visibleCount > 0) {
       resultsGrid.innerHTML = '';
+      matchedHotspots.forEach((item) => {
+        resultsGrid.appendChild(buildHotspotCard(item));
+      });
       matchedCards.forEach((card) => {
         const clone = card.cloneNode(true);
         resultsGrid.appendChild(clone);
       });
       resultsSection.hidden = false;
       mainCardsSection.hidden = true;
-      if (emptyState) {
-        emptyState.hidden = true;
-      }
+      if (emptyState) emptyState.hidden = true;
     } else if (query && visibleCount === 0) {
       resultsSection.hidden = false;
       mainCardsSection.hidden = true;
       resultsGrid.innerHTML = '';
-      if (emptyState) {
-        emptyState.hidden = false;
-      }
+      if (emptyState) emptyState.hidden = false;
     } else {
       resultsSection.hidden = true;
       mainCardsSection.hidden = false;
-      if (emptyState) {
-        emptyState.hidden = true;
-      }
+      if (emptyState) emptyState.hidden = true;
     }
 
     if (clearButton) {
@@ -165,24 +205,57 @@ function initProductSearch() {
       return;
     }
 
-    // Find matching cards for count
+    // Find matching items (cards + core products) for count
     let matchCount = 0;
     cards.forEach((card, index) => {
-      if (searchIndex[index].includes(query)) {
-        matchCount++;
+      if (cardSearchIndex[index].includes(query)) matchCount++;
+    });
+    hotspotItems.forEach((item, index) => {
+      if (hotspotSearchIndex[index].includes(query)) matchCount++;
+    });
+
+    // Find matching product names for suggestions - IMPROVED MATCHING
+    // Group results by type: exact code matches first, then title matches, then partial matches
+    const exactMatches = [];
+    const titleMatches = [];
+    const partialMatches = [];
+    
+    productNames.forEach((product) => {
+      const code = (product.code || '').toLowerCase();
+      const title = (product.title || '').toLowerCase();
+      const combined = `${code} ${title}`.toLowerCase();
+      
+      // Exact code match (highest priority)
+      if (code === query) {
+        exactMatches.push(product);
+      }
+      // Code starts with query (for family matching like "MX" matches "MX5P3")
+      else if (code.startsWith(query)) {
+        exactMatches.push(product);
+      }
+      // Full title word match
+      else if (title === query || title.includes(` ${query}`)) {
+        titleMatches.push(product);
+      }
+      // Partial anywhere in combined
+      else if (combined.includes(query)) {
+        partialMatches.push(product);
       }
     });
 
-    // Find matching product names for suggestions
-    const matchingProducts = productNames.filter((product) => {
-      const combined = `${product.code} ${product.title}`.toLowerCase();
-      return combined.includes(query);
+    // Combine in order of relevance, deduplicate
+    const seen = new Set();
+    const matchingProducts = [...exactMatches, ...titleMatches, ...partialMatches].filter((product) => {
+      const key = `${product.code}-${product.title}`;
+      if (seen.has(key)) return false;
+      seen.add(key);
+      return true;
     });
 
     suggestionsList.innerHTML = '';
     
     if (matchingProducts.length > 0) {
-      matchingProducts.slice(0, 5).forEach((product) => {
+      matchingProducts.slice(0, 8).forEach((product) => {
         const li = document.createElement('li');
         li.role = 'option';
         const titleSpan = document.createElement('strong');
@@ -193,12 +266,20 @@ function initProductSearch() {
           const codeSpan = document.createElement('span');
           codeSpan.textContent = product.code;
           li.appendChild(codeSpan);
+        } else if (product.sub) {
+          const subSpan = document.createElement('span');
+          subSpan.textContent = product.sub;
+          li.appendChild(subSpan);
         }
         
         li.addEventListener('click', () => {
+          dropdown.hidden = true;
+          if (product.type === 'core' && product.href) {
+            window.location.href = product.href;
+            return;
+          }
           input.value = product.title || product.code;
           applyFilter(product.title || product.code);
-          dropdown.hidden = true;
         });
         
         suggestionsList.appendChild(li);
@@ -279,6 +360,142 @@ function initProductSearch() {
   const initialQuery = new URLSearchParams(window.location.search).get('q') || '';
   input.value = initialQuery;
   applyFilter(initialQuery, false);
+}
+
+function initCoreProductNetwork() {
+  const networkSection = document.querySelector('.core-network-section');
+  const detailImage = document.getElementById('coreNetworkDetailImage');
+  const detailTitle = document.getElementById('coreNetworkDetailTitle');
+  const detailSubtitle = document.getElementById('coreNetworkDetailSubtitle');
+  const detailDescription = document.getElementById('coreNetworkDetailDescription');
+  const detailLink = document.getElementById('coreNetworkDetailLink');
+
+  if (!networkSection || !detailImage || !detailTitle || !detailSubtitle || !detailDescription || !detailLink) {
+    return;
+  }
+
+  const bulletify = (text) => {
+    const chunks = text.split(/(?<=[.!?])\s+/).map((c) => c.trim()).filter(Boolean);
+    return (chunks.length ? chunks : [text.trim()]).map((item) => `<li>${item}</li>`).join('');
+  };
+
+  const MX5PT_DESC = 'MX5PT is a slim, lightweight Table Top device for reading 13.56 MHz High Frequency RFID & NFC cards and 125 KHz Low Frequency RFID cards. The MX5PT is a 2 in 1 reader offering the versatility of RFID HF & LF all in one, enhancing your login security offerings.';
+  const K9JR_DESC = 'K9Jr-BT-2DW is the ideal multi-functional Barcode ID Reader for reading 1D and 2D barcodes from Drivers Licenses, Health ID Cards, and Membership IDs via Bluetooth Keyboard. Converts Health card 2D barcode to magnetic stripe output — no application modification needed. Two Barcode Auto trigger Sensors & a Manual trigger Button are built-in standard features. Optional RFID HF reader available as an add-on.';
+  const POS108_DESC = 'POS108 is a cash drawer alarm peripheral used to monitor cash drawer status and enhance front-counter security workflows.';
+  const MX5K9_DESC = 'MX5K9 combines 2D barcode and magnetic read support in a compact desktop form factor for retail and service desks.';
+  const MX5C_SC_DESC = 'MX5C-SC is an IC-Chip reader designed for smart-card credential workflows requiring secure chip-based card reads.';
+  const MX5P3_SC_M2_DESC = 'MX5P3-SC-M2 is a MAG-IC CHIP-RFID reader supporting mixed credential environments with a single endpoint.';
+  const MX5C_M2_DESC = 'MX5C-M2 is a compact RFID reader for fast credential tap workflows and reliable low-profile deployment.';
+  const MX5C_M2_FP_DESC = 'MX5C-M2-FP adds biometric support to RFID workflows for stronger multi-factor authentication scenarios.';
+  const MX5P3_DESC = 'MX5P3 is a magnetic stripe reader optimized for existing magstripe card workflows and legacy system compatibility.';
+
+  const products = {
+    'mx5p3-sc-m2-fp': {
+      title: 'MX5P3-SC-M2-FP',
+      subtitle: 'Core multi-format platform',
+      description: 'MX5P3-SC-M2-FP is a compact, lightweight design for reading 13.56 MHz HF RFID & NFC cards, IC-Chip & Smart Cards, 3 tracks Magstripe data, and a built-in Fingerprint Biometric reader. The MX5P3-SC-M2-FP is a 4 in 1 reader offering diversity and ease of use with an innovative design that installs vertically or horizontally. Enhance your login security with the 4 in 1, two or three factor authentication device.',
+      image: 'assets/images/products/posh-products-04.png',
+      href: 'core-products/products/mx5p3-sc-m2-fp.html'
+    },
+    'pos108': {
+      title: 'POS108',
+      subtitle: 'Cash drawer alarm',
+      description: POS108_DESC,
+      image: 'assets/images/products/posh-products-05.png',
+      href: 'core-products/products/k9jr-bt-2dw-front.html'
+    },
+    'mx5-k9': {
+      title: 'MX5K9',
+      subtitle: '2D-MAG reader+',
+      description: MX5K9_DESC,
+      image: 'assets/images/products/posh-products-06.png',
+      href: 'core-products/products/k9jr-bt-2dw-top.html'
+    },
+    'mx5pt': {
+      title: 'MX5PT',
+      subtitle: 'Table Top Reader',
+      description: MX5PT_DESC,
+      image: 'assets/images/products/posh-products-07.png',
+      href: 'core-products/products/k9jr-bt-2dw-rear.html'
+    },
+    'mx5c-sc': {
+      title: 'MX5C-SC',
+      subtitle: 'IC-Chip Reader',
+      description: MX5C_SC_DESC,
+      image: 'assets/images/products/posh-products-08.png',
+      href: 'core-products/products/mx5pt-wedge.html'
+    },
+    'mx5p3-sc-m2': {
+      title: 'MX5P3-SC-M2',
+      subtitle: 'Mag-IC chip-RFID reader',
+      description: MX5P3_SC_M2_DESC,
+      image: 'assets/images/products/posh-products-09.png',
+      href: 'core-products/products/mx5pt-rfid-chip.html'
+    },
+    'mx5c-m2': {
+      title: 'MX5C-M2',
+      subtitle: 'RFID reader',
+      description: MX5C_M2_DESC,
+      image: 'assets/images/products/posh-products-10.png',
+      href: 'core-products/products/mx5pt-rfid-chip.html'
+    },
+    'mx5c-m2-fp': {
+      title: 'MX5C-M2-FP',
+      subtitle: 'RFID-Bio Reader',
+      description: MX5C_M2_FP_DESC,
+      image: 'assets/images/products/posh-products-11.png',
+      href: 'core-products/products/mx5pt-rfid-low-profile.html'
+    },
+    'mx5p3': {
+      title: 'MX5P3',
+      subtitle: 'Magnetic strip reader',
+      description: MX5P3_DESC,
+      image: 'assets/images/products/posh-products-12.png',
+      href: 'core-products/products/mx5pt-rfid-display.html'
+    },
+    'mx5-k9-jr': {
+      title: 'MX5-K9-Jr',
+      subtitle: '2D reader+',
+      description: K9JR_DESC,
+      image: 'assets/images/products/posh-products-13.png',
+      href: 'core-products/products/mx5pt-classic.html'
+    }
+  };
+
+  const productTriggers = Array.from(networkSection.querySelectorAll('[data-core-product]'));
+
+  const setActiveProduct = (slug) => {
+    const product = products[slug];
+    if (!product) {
+      return;
+    }
+
+    detailImage.src = product.image;
+    detailImage.alt = product.title;
+    detailTitle.textContent = product.title;
+    detailSubtitle.textContent = product.subtitle;
+    detailDescription.innerHTML = bulletify(product.description);
+    detailLink.href = `${product.href}?product=${encodeURIComponent(slug)}`;
+
+    productTriggers.forEach((element) => {
+      element.classList.toggle('active', element.dataset.coreProduct === slug);
+    });
+  };
+
+  productTriggers.forEach((element) => {
+    const slug = element.dataset.coreProduct;
+    const mapped = products[slug];
+    if (mapped && element.tagName === 'A') {
+      element.href = `${mapped.href}?product=${encodeURIComponent(slug)}`;
+    }
+
+    const activate = () => setActiveProduct(element.dataset.coreProduct);
+    element.addEventListener('mouseenter', activate);
+    element.addEventListener('focus', activate);
+    element.addEventListener('click', activate);
+  });
+
+  setActiveProduct('mx5p3-sc-m2-fp');
 }
 
 function initQuickMessageModal() {
@@ -467,4 +684,5 @@ function initQuickMessageModal() {
 }
 
 initProductSearch();
+initCoreProductNetwork();
 initQuickMessageModal();

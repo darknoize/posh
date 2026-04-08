@@ -43,7 +43,237 @@
         <div class="eyebrow">Our Products</div>
         <h1>Modular Devices for Identity, Access, and Secure Interaction.</h1>
         <p>Explore POSH device platforms built for secure access, identity validation, and scalable field deployment.</p>
-        <div class="product-hero-links" aria-label="Product quick links">
+      </div>
+    </section>
+
+
+
+    <section class="section product-search-results-section" id="productSearchResultsSection" hidden>
+      <div class="shell">
+        <h2 class="product-grid-title" id="productSearchTitle">Search Results</h2>
+      </div>
+      <div class="shell product-grid" id="productSearchResults">
+      </div>
+      <div class="shell">
+        <p class="search-empty glass" id="productSearchEmpty" hidden>No products matched your search. Try another keyword.</p>
+      </div>
+    </section>
+
+    <section class="section core-network-section" id="core" aria-labelledby="core-network-title">
+      <div class="shell">
+        <div class="core-network-shell glass">
+          <div class="core-network-heading">
+            <div>
+              <p class="eyebrow">Interactive Product Network</p>
+              <h2 id="core-network-title" class="core-network-title">Explore the Core Product Line</h2>
+            </div>
+            <div class="core-network-search-shell">
+              <div class="search-input-wrap">
+                <input id="productSearchInput" type="text" placeholder="Search products..." aria-label="Search products" autocomplete="off" />
+                <svg class="search-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                  <circle cx="11" cy="11" r="6" fill="none" stroke="currentColor" stroke-width="2"></circle>
+                  <line x1="16" y1="16" x2="21" y2="21" stroke="currentColor" stroke-width="2" stroke-linecap="round"></line>
+                </svg>
+                <div id="productSearchDropdown" class="product-search-dropdown" hidden>
+                  <div class="search-results-preview">
+                    <p id="searchResultsCount" class="search-results-count"></p>
+                  </div>
+                  <ul id="productSearchSuggestions" class="search-suggestions" role="listbox" aria-label="Search suggestions"></ul>
+                </div>
+              </div>
+              <button id="productSearchClear" class="search-clear" type="button" aria-label="Clear product search" hidden>Clear</button>
+            </div>
+          </div>
+
+          <div class="core-network-stage">
+            <img class="core-network-bg core-network-bg-dark" src="core-products/assets/network-bg.png" alt="Core products network background" />
+            <img class="core-network-bg core-network-bg-light" src="assets/images/posh-products-light.png" alt="Core products network background" />
+            <div class="core-network-overlay"></div>
+
+            <a class="core-network-hotspot core-network-hotspot-center" href="core-products/products/mx5p3-sc-m2-fp.html" style="left:50%; top:50%; --spot-size:calc(23vw + 25px)" data-core-product="mx5p3-sc-m2-fp">
+              <div class="core-network-hotspot-image-wrap">
+                <img src="assets/images/products/posh-products-04.png" alt="MX5P3-SC-M2-FP" />
+              </div>
+              <div class="core-network-hotspot-copy">
+                <p class="core-network-hotspot-title">MX5P3-SC-M2-FP</p>
+                <p class="core-network-hotspot-sub">Core multi-format platform</p>
+              </div>
+            </a>
+
+            <a class="core-network-hotspot" href="core-products/products/mx5pt-classic.html" style="left:26%; top:22%; --spot-size:11vw" data-core-product="mx5-k9-jr">
+              <div class="core-network-hotspot-image-wrap">
+                <img src="assets/images/products/posh-products-13.png" alt="MX5-K9-Jr" />
+              </div>
+              <div class="core-network-hotspot-copy">
+                <p class="core-network-hotspot-title">MX5-K9-Jr</p>
+                <p class="core-network-hotspot-sub">2D reader+</p>
+              </div>
+            </a>
+
+            <a class="core-network-hotspot" href="core-products/products/k9jr-bt-2dw-front.html" style="left:50%; top:14%; --spot-size:11vw" data-core-product="pos108">
+              <div class="core-network-hotspot-image-wrap">
+                <img src="assets/images/products/posh-products-05.png" alt="POS108" />
+              </div>
+              <div class="core-network-hotspot-copy">
+                <p class="core-network-hotspot-title">POS108</p>
+                <p class="core-network-hotspot-sub">Cash drawer alarm</p>
+              </div>
+            </a>
+
+            <a class="core-network-hotspot" href="core-products/products/k9jr-bt-2dw-top.html" style="left:75%; top:18%; --spot-size:10vw" data-core-product="mx5-k9">
+              <div class="core-network-hotspot-image-wrap">
+                <img src="assets/images/products/posh-products-06.png" alt="MX5K9" />
+              </div>
+              <div class="core-network-hotspot-copy">
+                <p class="core-network-hotspot-title">MX5K9</p>
+                <p class="core-network-hotspot-sub">2D-MAG reader+</p>
+              </div>
+            </a>
+
+            <a class="core-network-hotspot" href="core-products/products/mx5pt-rfid-display.html" style="left:calc(18% - 45px); top:46%; --spot-size:11vw" data-core-product="mx5p3">
+              <div class="core-network-hotspot-image-wrap">
+                <img src="assets/images/products/posh-products-12.png" alt="MX5P3" />
+              </div>
+              <div class="core-network-hotspot-copy">
+                <p class="core-network-hotspot-title">MX5P3</p>
+                <p class="core-network-hotspot-sub">Magnetic strip reader</p>
+              </div>
+            </a>
+
+            <a class="core-network-hotspot" href="core-products/products/k9jr-bt-2dw-rear.html" style="left:81%; top:44%; --spot-size:11vw" data-core-product="mx5pt">
+              <div class="core-network-hotspot-image-wrap">
+                <img src="assets/images/products/posh-products-07.png" alt="MX5PT" />
+              </div>
+              <div class="core-network-hotspot-copy">
+                <p class="core-network-hotspot-title">MX5PT</p>
+                <p class="core-network-hotspot-sub">Table Top Reader</p>
+              </div>
+            </a>
+
+            <a class="core-network-hotspot" href="core-products/products/mx5pt-wedge.html" style="left:81%; top:73%; --spot-size:11vw" data-core-product="mx5c-sc">
+              <div class="core-network-hotspot-image-wrap">
+                <img src="assets/images/products/posh-products-08.png" alt="MX5C-SC" />
+              </div>
+              <div class="core-network-hotspot-copy">
+                <p class="core-network-hotspot-title">MX5C-SC</p>
+                <p class="core-network-hotspot-sub">IC-Chip Reader</p>
+              </div>
+            </a>
+
+            <a class="core-network-hotspot" href="core-products/products/mx5pt-rfid-low-profile.html" style="left:18%; top:73%; --spot-size:11vw" data-core-product="mx5c-m2-fp">
+              <div class="core-network-hotspot-image-wrap">
+                <img src="assets/images/products/posh-products-11.png" alt="MX5C-M2-FP" />
+              </div>
+              <div class="core-network-hotspot-copy">
+                <p class="core-network-hotspot-title">MX5C-M2-FP</p>
+                <p class="core-network-hotspot-sub">RFID-Bio Reader</p>
+              </div>
+            </a>
+
+            <a class="core-network-hotspot" href="core-products/products/mx5pt-rfid-chip.html" style="left:38%; top:80%; --spot-size:11vw" data-core-product="mx5c-m2">
+              <div class="core-network-hotspot-image-wrap">
+                <img src="assets/images/products/posh-products-10.png" alt="MX5C-M2" />
+              </div>
+              <div class="core-network-hotspot-copy">
+                <p class="core-network-hotspot-title">MX5C-M2</p>
+                <p class="core-network-hotspot-sub">RFID reader</p>
+              </div>
+            </a>
+
+            <a class="core-network-hotspot" href="core-products/products/mx5pt-rfid-chip.html" style="left:67%; top:80%; --spot-size:11vw" data-core-product="mx5p3-sc-m2">
+              <div class="core-network-hotspot-image-wrap">
+                <img src="assets/images/products/posh-products-09.png" alt="MX5P3-SC-M2" />
+              </div>
+              <div class="core-network-hotspot-copy">
+                <p class="core-network-hotspot-title">MX5P3-SC-M2</p>
+                <p class="core-network-hotspot-sub">Mag-IC chip-RFID reader</p>
+              </div>
+            </a>
+          </div>
+
+          <div class="core-network-footer">
+            <article class="core-network-detail-card">
+              <div class="core-network-detail-image-wrap">
+                <img id="coreNetworkDetailImage" src="assets/images/products/posh-products-04.png" alt="MX5P3-SC-M2-FP" />
+              </div>
+              <div class="core-network-detail-copy">
+                <p class="core-network-detail-label">Featured Product</p>
+                <h3 id="coreNetworkDetailTitle">MX5P3-SC-M2-FP</h3>
+                <p class="core-network-detail-subtitle" id="coreNetworkDetailSubtitle">Core multi-format platform</p>
+                <ul class="core-network-detail-description" id="coreNetworkDetailDescription"><li>MX5P3-SC-M2-FP is a compact, lightweight design for reading 13.56 MHz HF RFID &amp; NFC cards, IC-Chip &amp; Smart Cards, 3 tracks Magstripe data and a built-in Fingerprint Biometric reader.</li></ul>
+              </div>
+            </article>
+
+            <aside class="core-network-thumb-card" id="core-network-all-products">
+              <h3>All Products</h3>
+              <div class="core-network-thumb-scroller">
+                <a class="core-network-thumb-link active" href="core-products/products/mx5p3-sc-m2-fp.html" data-core-product="mx5p3-sc-m2-fp">
+                  <img src="assets/images/products/posh-products-04.png" alt="MX5P3-SC-M2-FP" />
+                  <strong>MX5P3-SC-M2-FP</strong>
+                  <span>Core multi-format platform</span>
+                </a>
+                <a class="core-network-thumb-link" href="core-products/products/k9jr-bt-2dw-front.html" data-core-product="pos108">
+                  <img src="assets/images/products/posh-products-05.png" alt="POS108" />
+                  <strong>POS108</strong>
+                  <span>Cash drawer alarm</span>
+                </a>
+                <a class="core-network-thumb-link" href="core-products/products/k9jr-bt-2dw-top.html" data-core-product="mx5-k9">
+                  <img src="assets/images/products/posh-products-06.png" alt="MX5K9" />
+                  <strong>MX5K9</strong>
+                  <span>2D-MAG reader+</span>
+                </a>
+                <a class="core-network-thumb-link" href="core-products/products/k9jr-bt-2dw-rear.html" data-core-product="mx5pt">
+                  <img src="assets/images/products/posh-products-07.png" alt="MX5PT" />
+                  <strong>MX5PT</strong>
+                  <span>Table Top Reader</span>
+                </a>
+                <a class="core-network-thumb-link" href="core-products/products/mx5pt-wedge.html" data-core-product="mx5c-sc">
+                  <img src="assets/images/products/posh-products-08.png" alt="MX5C-SC" />
+                  <strong>MX5C-SC</strong>
+                  <span>IC-Chip Reader</span>
+                </a>
+                <a class="core-network-thumb-link" href="core-products/products/mx5pt-rfid-chip.html" data-core-product="mx5p3-sc-m2">
+                  <img src="assets/images/products/posh-products-09.png" alt="MX5P3-SC-M2" />
+                  <strong>MX5P3-SC-M2</strong>
+                  <span>Mag-IC chip-RFID reader</span>
+                </a>
+                <a class="core-network-thumb-link" href="core-products/products/mx5pt-rfid-chip.html" data-core-product="mx5c-m2">
+                  <img src="assets/images/products/posh-products-10.png" alt="MX5C-M2" />
+                  <strong>MX5C-M2</strong>
+                  <span>RFID reader</span>
+                </a>
+                <a class="core-network-thumb-link" href="core-products/products/mx5pt-rfid-low-profile.html" data-core-product="mx5c-m2-fp">
+                  <img src="assets/images/products/posh-products-11.png" alt="MX5PT" />
+                  <strong>MX5C-M2-FP</strong>
+                  <span>RFID-Bio Reader</span>
+                </a>
+                <a class="core-network-thumb-link" href="core-products/products/mx5pt-rfid-display.html" data-core-product="mx5p3">
+                  <img src="assets/images/products/posh-products-12.png" alt="MX5P3" />
+                  <strong>MX5P3</strong>
+                  <span>Magnetic strip reader</span>
+                </a>
+                <a class="core-network-thumb-link" href="core-products/products/mx5pt-classic.html" data-core-product="mx5-k9-jr">
+                  <img src="assets/images/products/posh-products-13.png" alt="MX5-K9-Jr" />
+                  <strong>MX5-K9-Jr</strong>
+                  <span>2D reader+</span>
+                </a>
+              </div>
+            </aside>
+          </div>
+
+          <div class="core-network-actions">
+            <a class="button button-light" id="coreNetworkDetailLink" href="core-products/products/mx5p3-sc-m2-fp.html">Open Product Page</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section product-recommendations-wrap" aria-label="Recommendations">
+      <div class="shell">
+        <div class="product-recommendations-head">
+          <p class="eyebrow">Recommendations</p>
+        </div>
+        <div class="product-hero-links" aria-label="Recommended links">
           <a class="product-gallery-bubble" href="posh-gallery/index.html" aria-label="Open Product Gallery">
             <span class="product-gallery-bubble-media">
               <img class="product-gallery-thumb product-gallery-thumb-dark" src="posh-gallery/assets/hero-overview.png" alt="Product Gallery preview" />
@@ -76,43 +306,7 @@
       </div>
     </section>
 
-    <section class="section product-toolbar-wrap">
-      <div class="shell product-toolbar glass">
-        <div>
-          <strong>Search Products</strong>
-          <p>Search by device type, credential technology, and deployment requirements.</p>
-        </div>
-        <div class="search-shell">
-          <div class="search-input-wrap">
-            <input id="productSearchInput" type="text" placeholder="Search products..." aria-label="Search products" autocomplete="off" />
-            <svg class="search-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-              <circle cx="11" cy="11" r="6" fill="none" stroke="currentColor" stroke-width="2"></circle>
-              <line x1="16" y1="16" x2="21" y2="21" stroke="currentColor" stroke-width="2" stroke-linecap="round"></line>
-            </svg>
-            <div id="productSearchDropdown" class="product-search-dropdown" hidden>
-              <div class="search-results-preview">
-                <p id="searchResultsCount" class="search-results-count"></p>
-              </div>
-              <ul id="productSearchSuggestions" class="search-suggestions" role="listbox" aria-label="Search suggestions"></ul>
-            </div>
-          </div>
-          <button id="productSearchClear" class="search-clear" type="button" aria-label="Clear product search" hidden>Clear</button>
-        </div>
-      </div>
-    </section>
-
-    <section class="section product-search-results-section" id="productSearchResultsSection" hidden>
-      <div class="shell">
-        <h2 class="product-grid-title" id="productSearchTitle">Search Results</h2>
-      </div>
-      <div class="shell product-grid" id="productSearchResults">
-      </div>
-      <div class="shell">
-        <p class="search-empty glass" id="productSearchEmpty" hidden>No products matched your search. Try another keyword.</p>
-      </div>
-    </section>
-
-    <section class="section product-cards-section">
+    <section class="section product-cards-section" id="product-configurations">
       <div class="shell">
         <h2 class="product-grid-title">Product Configurations</h2>
       </div>
@@ -127,7 +321,6 @@
             <div class="spec-list associated-model-pills">
               <span>RFID</span><span>Chip</span><span>Magnetic</span><span>Biometric</span>
             </div>
-            <a class="text-link" href="downloads.html#datasheets">View data sheet</a>
           </div>
         </article>
 
