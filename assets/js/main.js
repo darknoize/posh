@@ -229,7 +229,7 @@ function initProductSearch() {
       if (code === query) {
         exactMatches.push(product);
       }
-      // Code starts with query (for family matching like "MX" matches "MX5P3")
+      // Code starts with query (for family matching like "MX" matches "MX5-P3")
       else if (code.startsWith(query)) {
         exactMatches.push(product);
       }
@@ -383,42 +383,42 @@ function initCoreProductNetwork() {
     return (chunks.length ? chunks : [text.trim()]).map((item) => `<li>${item}</li>`).join('');
   };
 
-  const MX5PT_DESC = 'MX5PT is a slim, lightweight Table Top device for reading 13.56 MHz High Frequency RFID & NFC cards and 125 KHz Low Frequency RFID cards. The MX5PT is a 2 in 1 reader offering the versatility of RFID HF & LF all in one, enhancing your login security offerings.';
+  const MX5_PT_DESC = 'MX5-PT is a slim, lightweight Table Top device for reading 13.56 MHz High Frequency RFID & NFC cards and 125 KHz Low Frequency RFID cards. The MX5-PT is a 2 in 1 reader offering the versatility of RFID HF & LF all in one, enhancing your login security offerings.';
   const K9JR_DESC = 'K9Jr-BT-2DW is the ideal multi-functional Barcode ID Reader for reading 1D and 2D barcodes from Drivers Licenses, Health ID Cards, and Membership IDs via Bluetooth Keyboard. Converts Health card 2D barcode to magnetic stripe output — no application modification needed. Two Barcode Auto trigger Sensors & a Manual trigger Button are built-in standard features. Optional RFID HF reader available as an add-on.';
-  const POS108_DESC = 'POS108 is a cash drawer alarm peripheral used to monitor cash drawer status and enhance front-counter security workflows.';
-  const MX5K9_DESC = 'MX5K9 combines 2D barcode and magnetic read support in a compact desktop form factor for retail and service desks.';
+  const POS108_DESC = 'POS-108/708 is a cash drawer alarm peripheral used to monitor cash drawer status and enhance front-counter security workflows.';
+  const MX5K9_DESC = 'MX5-K9 combines 2D barcode and magnetic read support in a compact desktop form factor for retail and service desks.';
   const MX5C_SC_DESC = 'MX5C-SC is an IC-Chip reader designed for smart-card credential workflows requiring secure chip-based card reads.';
-  const MX5P3_SC_M2_DESC = 'MX5P3-SC-M2 is a MAG-IC CHIP-RFID reader supporting mixed credential environments with a single endpoint.';
+  const MX5_P3_SC_M2_DESC = 'MX5-P3-SC-M2 is a MAG-IC CHIP-RFID reader supporting mixed credential environments with a single endpoint.';
   const MX5C_M2_DESC = 'MX5C-M2 is a compact RFID reader for fast credential tap workflows and reliable low-profile deployment.';
   const MX5C_M2_FP_DESC = 'MX5C-M2-FP adds biometric support to RFID workflows for stronger multi-factor authentication scenarios.';
-  const MX5P3_DESC = 'MX5P3 is a magnetic stripe reader optimized for existing magstripe card workflows and legacy system compatibility.';
+  const MX5_P3_DESC = 'MX5-P3 is a magnetic stripe reader optimized for existing magstripe card workflows and legacy system compatibility.';
 
   const products = {
     'mx5p3-sc-m2-fp': {
-      title: 'MX5P3-SC-M2-FP',
+      title: 'MX5-P3-SC-M2-FP',
       subtitle: 'Core multi-format platform',
-      description: 'MX5P3-SC-M2-FP is a compact, lightweight design for reading 13.56 MHz HF RFID & NFC cards, IC-Chip & Smart Cards, 3 tracks Magstripe data, and a built-in Fingerprint Biometric reader. The MX5P3-SC-M2-FP is a 4 in 1 reader offering diversity and ease of use with an innovative design that installs vertically or horizontally. Enhance your login security with the 4 in 1, two or three factor authentication device.',
+      description: 'MX5-P3-SC-M2-FP is a compact, lightweight design for reading 13.56 MHz HF RFID & NFC cards, IC-Chip & Smart Cards, 3 tracks Magstripe data, and a built-in Fingerprint Biometric reader. The MX5-P3-SC-M2-FP is a 4 in 1 reader offering diversity and ease of use with an innovative design that installs vertically or horizontally. Enhance your login security with the 4 in 1, two or three factor authentication device.',
       image: 'assets/images/products/posh-products-04.png',
       href: 'core-products/products/mx5p3-sc-m2-fp.html'
     },
     'pos108': {
-      title: 'POS108',
+      title: 'POS-108/708',
       subtitle: 'Cash drawer alarm',
       description: POS108_DESC,
       image: 'assets/images/products/posh-products-05.png',
       href: 'core-products/products/k9jr-bt-2dw-front.html'
     },
     'mx5-k9': {
-      title: 'MX5K9',
+      title: 'MX5-K9',
       subtitle: '2D-MAG reader+',
       description: MX5K9_DESC,
       image: 'assets/images/products/posh-products-06.png',
       href: 'core-products/products/k9jr-bt-2dw-top.html'
     },
     'mx5pt': {
-      title: 'MX5PT',
+      title: 'MX5-PT',
       subtitle: 'Table Top Reader',
-      description: MX5PT_DESC,
+      description: MX5_PT_DESC,
       image: 'assets/images/products/posh-products-07.png',
       href: 'core-products/products/k9jr-bt-2dw-rear.html'
     },
@@ -430,9 +430,9 @@ function initCoreProductNetwork() {
       href: 'core-products/products/mx5pt-wedge.html'
     },
     'mx5p3-sc-m2': {
-      title: 'MX5P3-SC-M2',
+      title: 'MX5-P3-SC-M2',
       subtitle: 'Mag-IC chip-RFID reader',
-      description: MX5P3_SC_M2_DESC,
+      description: MX5_P3_SC_M2_DESC,
       image: 'assets/images/products/posh-products-09.png',
       href: 'core-products/products/mx5pt-rfid-chip.html'
     },
@@ -451,14 +451,14 @@ function initCoreProductNetwork() {
       href: 'core-products/products/mx5pt-rfid-low-profile.html'
     },
     'mx5p3': {
-      title: 'MX5P3',
+      title: 'MX5-P3',
       subtitle: 'Magnetic strip reader',
-      description: MX5P3_DESC,
+      description: MX5_P3_DESC,
       image: 'assets/images/products/posh-products-12.png',
       href: 'core-products/products/mx5pt-rfid-display.html'
     },
     'mx5-k9-jr': {
-      title: 'MX5-K9-Jr',
+      title: 'MX5-K9Jr',
       subtitle: '2D reader+',
       description: K9JR_DESC,
       image: 'assets/images/products/posh-products-13.png',

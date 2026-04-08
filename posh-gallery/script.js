@@ -8,24 +8,24 @@ const products = [
     imageLight: 'assets/hero-overview-light.png'
   },
   {
-    title: 'MX5P3-SC-M2-FP',
+    title: 'MX5-P3-SC-M2-FP',
     subtitle: 'Core multi-format platform',
     short: 'RFID, NFC, chip, magstripe, and fingerprint — 4 in 1.',
-    description: 'MX5P3-SC-M2-FP is a compact, lightweight Design for Reading 13.56 MHz High Frequency Radio Frequency Identification (RFID) & NFC cards, IC-Chip & Smart Cards, 3 tracks Magstripe data and a built-in Fingerprint Biometric-reader. The MX5P3-SC-M2-FP is a 4 in 1 reader which offers diversity and ease of use thru its innovative design which can be easily installed vertically or horizontally. Enhance your login security with the 4 in 1, two or three factor Authentication device.',
+    description: 'MX5-P3-SC-M2-FP is a compact, lightweight Design for Reading 13.56 MHz High Frequency Radio Frequency Identification (RFID) & NFC cards, IC-Chip & Smart Cards, 3 tracks Magstripe data and a built-in Fingerprint Biometric-reader. The MX5-P3-SC-M2-FP is a 4 in 1 reader which offers diversity and ease of use thru its innovative design which can be easily installed vertically or horizontally. Enhance your login security with the 4 in 1, two or three factor Authentication device.',
     image: 'assets/core-top-front.png'
   },
   {
     title: 'MX5 RFID',
     subtitle: 'RFID & NFC multi-format reader',
     short: 'RFID, NFC, chip, and magstripe — 3 in 1.',
-    description: 'MX5P3-SC-M2 is a compact, lightweight Design for Reading 13.56 MHz High Frequency Radio Frequency Identification (RFID) & NFC cards, IC-Chip & Smart Cards, and 3 tracks Magstripe. The MX5P3-SC-M2 is a 3 in 1 reader which offers diversity and ease of use thru its innovative design which can be easily installed vertically or horizontally. Enhance your login security with the 3 in 1, two or three factor Authentication device.',
+    description: 'MX5-P3-SC-M2 is a compact, lightweight Design for Reading 13.56 MHz High Frequency Radio Frequency Identification (RFID) & NFC cards, IC-Chip & Smart Cards, and 3 tracks Magstripe. The MX5-P3-SC-M2 is a 3 in 1 reader which offers diversity and ease of use thru its innovative design which can be easily installed vertically or horizontally. Enhance your login security with the 3 in 1, two or three factor Authentication device.',
     image: 'assets/front-1.png'
   },
   {
     title: 'MX5 Smart Chip',
     subtitle: 'Chip & magstripe reader',
     short: 'Smart-chip and magstripe — 2 in 1.',
-    description: 'MX5P3-SC is a compact, lightweight Design for Reading IC-Chip & Smart Cards and 3 tracks Magstripe data. The MX5P3-SC is a 2 in 1 reader which offers diversity and ease of use thru its innovative design which can be easily installed vertically or horizontally.',
+    description: 'MX5-P3-SC is a compact, lightweight Design for Reading IC-Chip & Smart Cards and 3 tracks Magstripe data. The MX5-P3-SC is a 2 in 1 reader which offers diversity and ease of use thru its innovative design which can be easily installed vertically or horizontally.',
     image: 'assets/front-2.png'
   },
   {
@@ -50,10 +50,10 @@ const products = [
     image: 'assets/front-6.png'
   },
   {
-    title: 'MX5PT Table Top',
+    title: 'MX5-PT Table Top',
     subtitle: 'Wedge format reader',
     short: 'Dual-frequency RFID HF & LF tabletop reader.',
-    description: 'MX5PT is a slim, lightweight Table Top device for Reading 13.56 MHz High Frequency Radio Frequency Identification (RFID) & NFC cards and 125 KHz Low Frequency Radio Frequency Identification (RFID) cards. The MX5PT offers diversity of having a 2 in 1 reader, enhancing your login security offerings with the versatility of RFID HF & LF all in one.',
+    description: 'MX5-PT is a slim, lightweight Table Top device for Reading 13.56 MHz High Frequency Radio Frequency Identification (RFID) & NFC cards and 125 KHz Low Frequency Radio Frequency Identification (RFID) cards. The MX5-PT offers diversity of having a 2 in 1 reader, enhancing your login security offerings with the versatility of RFID HF & LF all in one.',
     image: 'assets/right-side.png'
   },
   {
@@ -64,17 +64,17 @@ const products = [
     image: 'assets/right-side-1.png'
   },
   {
-    title: 'MX5P3-SC-M2',
+    title: 'MX5-P3-SC-M2',
     subtitle: 'RFID & smart-chip combo',
     short: 'RFID, NFC, chip, and magstripe — 3 in 1.',
-    description: 'MX5P3-SC-M2 is a compact, lightweight Design for Reading 13.56 MHz High Frequency Radio Frequency Identification (RFID) & NFC cards, IC-Chip & Smart Cards, and 3 tracks Magstripe. The MX5P3-SC-M2 is a 3 in 1 reader which offers diversity and ease of use thru its innovative design which can be easily installed vertically or horizontally. Enhance your login security with the 3 in 1, two or three factor Authentication device.',
+    description: 'MX5-P3-SC-M2 is a compact, lightweight Design for Reading 13.56 MHz High Frequency Radio Frequency Identification (RFID) & NFC cards, IC-Chip & Smart Cards, and 3 tracks Magstripe. The MX5-P3-SC-M2 is a 3 in 1 reader which offers diversity and ease of use thru its innovative design which can be easily installed vertically or horizontally. Enhance your login security with the 3 in 1, two or three factor Authentication device.',
     image: 'assets/top-front-11.png'
   },
   {
-    title: 'MX5P3-SC-FP',
+    title: 'MX5-P3-SC-FP',
     subtitle: 'Chip, magstripe & fingerprint',
     short: 'Smart-chip, magstripe, and fingerprint biometric — 3 in 1.',
-    description: 'MX5P3-SC-FP is a compact, lightweight Design for Reading IC-Chip & Smart Cards, 3 tracks Magstripe data and a built-in Fingerprint Biometric-reader. The MX5P3-SC-FP is a 3 in 1 reader which offers diversity and ease of use thru its innovative design which can be easily installed vertically or horizontally. Enhance your login security with the 3 in 1, two or three factor Authentication device.',
+    description: 'MX5-P3-SC-FP is a compact, lightweight Design for Reading IC-Chip & Smart Cards, 3 tracks Magstripe data and a built-in Fingerprint Biometric-reader. The MX5-P3-SC-FP is a 3 in 1 reader which offers diversity and ease of use thru its innovative design which can be easily installed vertically or horizontally. Enhance your login security with the 3 in 1, two or three factor Authentication device.',
     image: 'assets/top-front-5.png'
   },
   {
@@ -85,17 +85,17 @@ const products = [
     image: 'assets/top-front-6.png'
   },
   {
-    title: 'MX5P3-SC',
+    title: 'MX5-P3-SC',
     subtitle: 'Smart-chip & magstripe reader',
     short: 'Chip and magstripe — 2 in 1.',
-    description: 'MX5P3-SC is a compact, lightweight Design for Reading IC-Chip & Smart Cards and 3 tracks Magstripe data. The MX5P3-SC is a 2 in 1 reader which offers diversity and ease of use thru its innovative design which can be easily installed vertically or horizontally.',
+    description: 'MX5-P3-SC is a compact, lightweight Design for Reading IC-Chip & Smart Cards and 3 tracks Magstripe data. The MX5-P3-SC is a 2 in 1 reader which offers diversity and ease of use thru its innovative design which can be easily installed vertically or horizontally.',
     image: 'assets/top-front-8.png'
   },
   {
-    title: 'MX5P3-SC Compact',
+    title: 'MX5-P3-SC Compact',
     subtitle: 'Streamlined smart-chip variant',
     short: 'Compact chip and magstripe — 2 in 1.',
-    description: 'MX5P3-SC is a compact, lightweight Design for Reading IC-Chip & Smart Cards and 3 tracks Magstripe data. The MX5P3-SC is a 2 in 1 reader which offers diversity and ease of use thru its innovative design which can be easily installed vertically or horizontally.',
+    description: 'MX5-P3-SC is a compact, lightweight Design for Reading IC-Chip & Smart Cards and 3 tracks Magstripe data. The MX5-P3-SC is a 2 in 1 reader which offers diversity and ease of use thru its innovative design which can be easily installed vertically or horizontally.',
     image: 'assets/top-front-9.png'
   }
 ];
