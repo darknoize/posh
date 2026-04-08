@@ -1,4 +1,7 @@
 (function initCoreProductPager() {
+  if (window.__coreProductPagerInitialized) return;
+  window.__coreProductPagerInitialized = true;
+
   const navPrev = document.querySelector('.product-nav-arrow.prev');
   const navNext = document.querySelector('.product-nav-arrow.next');
   if (!navPrev || !navNext) return;
@@ -98,42 +101,166 @@
     'mx5-k9-jr': 'K9Jr-Bluetooth Keyboard, 2DW is the Ideal Multi-Functional Barcode ID Reader to help you Read 1D and 2D barcodes from Drivers Licenses, Health ID Cards and Membership IDs. The K9Jr-Bluetooth offers diversity and ease of use thru its innovative design as a Bluetooth Keyboard. If you currently use a Magnetic card reader to read your Health Card then the K9Jr-Bluetooth will convert your Health card 2D barcode to a magnetic stripe data output via Bluetooth Keyboard. No need to modify your application. Two Barcode Auto trigger Sensors & a Manual trigger Button are built in as a standard feature of the K9Jr-Bluetooth. Optional RFID HF reader is available as an add-on feature.'
   };
 
-  const params = new URLSearchParams(window.location.search);
-  const requestedSlug = params.get('product');
-  const currentFile = window.location.pathname.split('/').pop() || '';
-
-  const currentIndex = sequence.findIndex((item) => {
-    if (!requestedSlug) return false;
-    return item.slug === requestedSlug && item.href === currentFile;
-  });
-
-  const fallbackIndex = sequence.findIndex((item) => item.href === currentFile);
-  const resolvedIndex = currentIndex >= 0 ? currentIndex : fallbackIndex;
-  if (resolvedIndex < 0) return;
-
-  const prevItem = sequence[(resolvedIndex - 1 + sequence.length) % sequence.length];
-  const nextItem = sequence[(resolvedIndex + 1) % sequence.length];
-  const currentItem = sequence[resolvedIndex];
-
   const heroImage = document.querySelector('.product-hero-frame img');
   const detailTitle = document.querySelector('.product-copy h2');
   const detailSubtitle = document.querySelector('.product-copy .detail-subtitle');
-  const detailDescription = document.querySelector('.product-copy .detail-description');
+  let detailDescription = document.querySelector('.product-copy .detail-description');
 
-  if (heroImage) {
-    heroImage.src = currentItem.image;
-    heroImage.alt = currentItem.title;
-  }
-  if (detailTitle) detailTitle.textContent = currentItem.title;
-  if (detailSubtitle) detailSubtitle.textContent = currentItem.subtitle;
-  if (detailDescription) detailDescription.textContent = descriptions[currentItem.slug] || detailDescription.textContent;
-  document.title = `${currentItem.title} | POSHMFG`;
+  const escapeHtml = (value) => String(value || '')
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
 
-  navPrev.href = `${prevItem.href}?product=${encodeURIComponent(prevItem.slug)}`;
-  navNext.href = `${nextItem.href}?product=${encodeURIComponent(nextItem.slug)}`;
+  const escapeRegExp = (value) => String(value || '').replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 
-  navPrev.setAttribute('aria-label', `Previous product: ${prevItem.title}`);
-  navNext.setAttribute('aria-label', `Next product: ${nextItem.title}`);
-  navPrev.title = `Previous: ${prevItem.title}`;
-  navNext.title = `Next: ${nextItem.title}`;
+  const uniqueStrings = (values) => {
+    const seen = new Set();
+    return values
+      .map((value) => String(value || '').trim())
+      .filter((value) => {
+        if (!value) return false;
+        const key = value.toLowerCase();
+        if (seen.has(key)) return false;
+        seen.add(key);
+        return true;
+      });
+  };
+
+  const extractModelTokens = (text) => {
+    const matches = String(text || '').match(/\b[A-Za-z]{1,6}\d[A-Za-z0-9]*(?:-[A-Za-z0-9]+)+\b/g) || [];
+    return uniqueStrings(matches);
+  };
+
+  const searchableTerms = [
+    'RFID', 'NFC', 'IC-Chip', 'Smart Card', 'Smart Cards', 'Magstripe', 'Magnetic Stripe',
+    'Fingerprint', 'Biometric', 'Bluetooth Keyboard', 'Bluetooth', 'Barcode', 'Authentication',
+    '1D', '2D', 'HF', 'LF', 'Drivers Licenses', 'Health ID Cards', 'Membership IDs',
+    'Manual trigger Button', 'Auto trigger Sensors'
+  ];
+
+  const getBoldTerms = (item, descriptionText) => uniqueStrings([
+    item.title,
+    item.subtitle,
+    ...extractModelTokens(item.title),
+    ...extractModelTokens(item.subtitle),
+    ...extractModelTokens(descriptionText),
+    ...searchableTerms
+  ]).sort((a, b) => b.length - a.length);
+
+  const boldTermsInText = (text, terms) => {
+    let result = escapeHtml(text);
+    terms.forEach((term) => {
+      const pattern = new RegExp(`\\b${escapeRegExp(term)}\\b`, 'gi');
+      result = result.replace(pattern, (match) => `<strong>${match}</strong>`);
+    });
+    return result;
+  };
+
+  const bulletify = (text) => {
+    const chunks = String(text || '')
+      .split(/(?<=[.!?])\s+/)
+      .map((chunk) => chunk.trim())
+      .filter(Boolean);
+    return chunks.length ? chunks : [String(text || '').trim()];
+  };
+
+  const ensureDescriptionList = () => {
+    if (!detailDescription) return null;
+    if (detailDescription.tagName === 'UL') return detailDescription;
+
+    const list = document.createElement('ul');
+    list.className = detailDescription.className;
+    if (detailDescription.id) list.id = detailDescription.id;
+
+    const initialText = detailDescription.textContent || '';
+    detailDescription.replaceWith(list);
+    detailDescription = list;
+
+    if (initialText.trim()) {
+      list.innerHTML = bulletify(initialText)
+        .map((item) => `<li>${escapeHtml(item)}</li>`)
+        .join('');
+    }
+
+    return list;
+  };
+
+  ensureDescriptionList();
+
+  const getIndexFromUrl = () => {
+    const params = new URLSearchParams(window.location.search);
+    const requestedSlug = params.get('product');
+    const currentFile = window.location.pathname.split('/').pop() || '';
+
+    if (requestedSlug) {
+      const slugMatch = sequence.findIndex((item) => item.slug === requestedSlug);
+      if (slugMatch >= 0) return slugMatch;
+    }
+
+    const fileMatch = sequence.findIndex((item) => item.href === currentFile);
+    return fileMatch >= 0 ? fileMatch : 0;
+  };
+
+  let activeIndex = getIndexFromUrl();
+
+  const setNavLinks = () => {
+    const prevItem = sequence[(activeIndex - 1 + sequence.length) % sequence.length];
+    const nextItem = sequence[(activeIndex + 1) % sequence.length];
+
+    navPrev.href = `${prevItem.href}?product=${encodeURIComponent(prevItem.slug)}`;
+    navNext.href = `${nextItem.href}?product=${encodeURIComponent(nextItem.slug)}`;
+
+    navPrev.setAttribute('aria-label', `Previous product: ${prevItem.title}`);
+    navNext.setAttribute('aria-label', `Next product: ${nextItem.title}`);
+    navPrev.title = `Previous: ${prevItem.title}`;
+    navNext.title = `Next: ${nextItem.title}`;
+  };
+
+  const renderProduct = (index, pushUrl) => {
+    activeIndex = ((index % sequence.length) + sequence.length) % sequence.length;
+    const currentItem = sequence[activeIndex];
+
+    if (heroImage) {
+      heroImage.src = currentItem.image;
+      heroImage.alt = currentItem.title;
+    }
+    if (detailTitle) detailTitle.textContent = currentItem.title;
+    if (detailSubtitle) detailSubtitle.textContent = currentItem.subtitle;
+    if (detailDescription) {
+      const descriptionText = descriptions[currentItem.slug] || detailDescription.textContent || '';
+      const terms = getBoldTerms(currentItem, descriptionText);
+      detailDescription.innerHTML = bulletify(descriptionText)
+        .map((item) => `<li>${boldTermsInText(item, terms)}</li>`)
+        .join('');
+      // Keep text at top when switching products so the container stays visually stable.
+      detailDescription.scrollTop = 0;
+    }
+    document.title = `${currentItem.title} | POSHMFG`;
+    setNavLinks();
+
+    if (pushUrl) {
+      const nextUrl = `${currentItem.href}?product=${encodeURIComponent(currentItem.slug)}`;
+      window.history.pushState({ product: currentItem.slug }, '', nextUrl);
+    }
+  };
+
+  navPrev.addEventListener('click', (event) => {
+    if (event.defaultPrevented || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+    event.preventDefault();
+    renderProduct(activeIndex - 1, true);
+  });
+
+  navNext.addEventListener('click', (event) => {
+    if (event.defaultPrevented || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+    event.preventDefault();
+    renderProduct(activeIndex + 1, true);
+  });
+
+  window.addEventListener('popstate', () => {
+    renderProduct(getIndexFromUrl(), false);
+  });
+
+  renderProduct(activeIndex, false);
 })();

@@ -369,8 +369,12 @@ function initCoreProductNetwork() {
   const detailSubtitle = document.getElementById('coreNetworkDetailSubtitle');
   const detailDescription = document.getElementById('coreNetworkDetailDescription');
   const detailLink = document.getElementById('coreNetworkDetailLink');
+  const thumbScroller = networkSection ? networkSection.querySelector('.core-network-thumb-scroller') : null;
+  const thumbPrev = document.getElementById('coreNetworkThumbPrev');
+  const thumbNext = document.getElementById('coreNetworkThumbNext');
+  const hasDetailView = !!(detailImage && detailTitle && detailSubtitle && detailDescription && detailLink);
 
-  if (!networkSection || !detailImage || !detailTitle || !detailSubtitle || !detailDescription || !detailLink) {
+  if (!networkSection) {
     return;
   }
 
@@ -470,12 +474,14 @@ function initCoreProductNetwork() {
       return;
     }
 
-    detailImage.src = product.image;
-    detailImage.alt = product.title;
-    detailTitle.textContent = product.title;
-    detailSubtitle.textContent = product.subtitle;
-    detailDescription.innerHTML = bulletify(product.description);
-    detailLink.href = `${product.href}?product=${encodeURIComponent(slug)}`;
+    if (hasDetailView) {
+      detailImage.src = product.image;
+      detailImage.alt = product.title;
+      detailTitle.textContent = product.title;
+      detailSubtitle.textContent = product.subtitle;
+      detailDescription.innerHTML = bulletify(product.description);
+      detailLink.href = `${product.href}?product=${encodeURIComponent(slug)}`;
+    }
 
     productTriggers.forEach((element) => {
       element.classList.toggle('active', element.dataset.coreProduct === slug);
@@ -495,7 +501,21 @@ function initCoreProductNetwork() {
     element.addEventListener('click', activate);
   });
 
-  setActiveProduct('mx5p3-sc-m2-fp');
+  if (thumbScroller && thumbPrev && thumbNext) {
+    const scrollStep = () => Math.max(180, Math.floor(thumbScroller.clientWidth * 0.65));
+
+    thumbPrev.addEventListener('click', () => {
+      thumbScroller.scrollBy({ left: -scrollStep(), behavior: 'smooth' });
+    });
+
+    thumbNext.addEventListener('click', () => {
+      thumbScroller.scrollBy({ left: scrollStep(), behavior: 'smooth' });
+    });
+  }
+
+  if (hasDetailView) {
+    setActiveProduct('mx5p3-sc-m2-fp');
+  }
 }
 
 function initQuickMessageModal() {
@@ -686,3 +706,8 @@ function initQuickMessageModal() {
 initProductSearch();
 initCoreProductNetwork();
 initQuickMessageModal();
+
+// Prevent multiple initializations
+if (!window.__poschInitialized) {
+  window.__poschInitialized = true;
+}

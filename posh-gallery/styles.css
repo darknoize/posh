@@ -7,6 +7,7 @@
   --gallery-scrollbar-track: rgba(255,255,255,0.05);
   --gallery-scrollbar-thumb: rgba(7, 14, 28, 0.62);
   --gallery-scrollbar-thumb-hover: rgba(12, 23, 45, 0.82);
+  --gallery-stage-height: clamp(260px, 42vw, 520px);
 }
 
 html[data-theme="light"] {
@@ -184,6 +185,7 @@ html[data-theme="light"] .eyebrow {
   grid-template-columns: minmax(0, 2fr) minmax(280px, 1fr);
   gap: 18px;
   align-items: stretch;
+  height: var(--gallery-stage-height);
 }
 
 .stage-viewer {
@@ -192,7 +194,8 @@ html[data-theme="light"] .eyebrow {
   overflow: hidden;
   background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.03));
   border: 1px solid rgba(255,255,255,0.08);
-  min-height: clamp(260px, 42vw, 520px);
+  min-height: 0;
+  height: var(--gallery-stage-height);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -200,8 +203,8 @@ html[data-theme="light"] .eyebrow {
 
 .stage-figure {
   width: 100%;
-  height: 100%;
-  min-height: clamp(260px, 42vw, 520px);
+  height: var(--gallery-stage-height);
+  min-height: 0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -238,7 +241,8 @@ html[data-theme="light"] .slide-image-light { display: block; }
 }
 
 .stage-detail {
-  min-height: clamp(260px, 42vw, 520px);
+  min-height: 0;
+  height: var(--gallery-stage-height);
   border-radius: 24px;
   background:
     radial-gradient(circle at top, rgba(108, 99, 255, 0.14), transparent 44%),
@@ -248,30 +252,7 @@ html[data-theme="light"] .slide-image-light { display: block; }
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  overflow-y: auto;
-  overscroll-behavior: contain;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: thin;
-  scrollbar-color: var(--gallery-scrollbar-thumb) var(--gallery-scrollbar-track);
-}
-
-.stage-detail::-webkit-scrollbar {
-  width: 10px;
-}
-
-.stage-detail::-webkit-scrollbar-track {
-  background: var(--gallery-scrollbar-track);
-  border-radius: 999px;
-}
-
-.stage-detail::-webkit-scrollbar-thumb {
-  background: var(--gallery-scrollbar-thumb);
-  border-radius: 999px;
-  border: 1px solid rgba(255,255,255,0.06);
-}
-
-.stage-detail::-webkit-scrollbar-thumb:hover {
-  background: var(--gallery-scrollbar-thumb-hover);
+  overflow: hidden;
 }
 
 .nav-arrow {
@@ -422,6 +403,32 @@ html[data-theme="light"] .slide-image-light { display: block; }
   color: var(--gallery-muted);
   line-height: 1.6;
   font-size: clamp(14px, 1.05vw, 15px);
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scrollbar-color: var(--gallery-scrollbar-thumb) var(--gallery-scrollbar-track);
+}
+
+.detail-description::-webkit-scrollbar {
+  width: 10px;
+}
+
+.detail-description::-webkit-scrollbar-track {
+  background: var(--gallery-scrollbar-track);
+  border-radius: 999px;
+}
+
+.detail-description::-webkit-scrollbar-thumb {
+  background: var(--gallery-scrollbar-thumb);
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.06);
+}
+
+.detail-description::-webkit-scrollbar-thumb:hover {
+  background: var(--gallery-scrollbar-thumb-hover);
 }
 
 .detail-description li {
@@ -483,7 +490,7 @@ html[data-theme="light"] .thumb-image {
 }
 
 html[data-theme="light"] .detail-label {
-  color: #5c7190;
+  color: #2b7de9;
 }
 
 html[data-theme="light"] .detail-subtitle {
@@ -491,18 +498,12 @@ html[data-theme="light"] .detail-subtitle {
 }
 
 @media (max-width: 1024px) {
+  :root {
+    --gallery-stage-height: clamp(240px, 40vw, 440px);
+  }
+
   .stage-main {
     grid-template-columns: minmax(0, 1.7fr) minmax(260px, 1fr);
-  }
-
-  .stage-viewer,
-  .stage-figure,
-  .stage-detail {
-    min-height: clamp(240px, 40vw, 440px);
-  }
-
-  .stage-detail {
-    height: clamp(240px, 40vw, 440px);
   }
 }
 
@@ -563,6 +564,10 @@ html[data-theme="light"] .detail-subtitle {
 }
 
 @media (max-width: 640px) {
+  :root {
+    --gallery-stage-height: clamp(220px, 62vw, 320px);
+  }
+
   .page-shell {
     width: min(100% - 16px, 1440px);
     padding-top: 12px;
@@ -570,11 +575,6 @@ html[data-theme="light"] .detail-subtitle {
 
   .gallery-stage {
     padding: 14px;
-  }
-
-  .stage-viewer,
-  .stage-figure {
-    min-height: clamp(220px, 62vw, 320px);
   }
 
   .stage-figure img {
