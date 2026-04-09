@@ -7,15 +7,34 @@
   if (!navPrev || !navNext) return;
 
   const pageHeader = document.querySelector('.page-header');
-  if (pageHeader && !pageHeader.querySelector('.product-search-link')) {
-    const searchLink = document.createElement('a');
-    searchLink.className = 'product-search-link';
-    searchLink.href = '../../products.html#core';
-    searchLink.textContent = 'Search Products';
-    pageHeader.appendChild(searchLink);
+  let searchLink = null;
+  if (pageHeader) {
+    searchLink = pageHeader.querySelector('.product-search-link');
+    if (!searchLink) {
+      searchLink = document.createElement('a');
+      searchLink.className = 'product-search-link';
+      pageHeader.appendChild(searchLink);
+    }
+    searchLink.textContent = 'Full List of Products';
+    searchLink.setAttribute('aria-label', 'Full List of Products');
+  }
+  if (pageHeader && !pageHeader.querySelector('.product-core-badge')) {
+    const badge = document.createElement('span');
+    badge.className = 'product-core-badge';
+    badge.textContent = 'Core Product';
+    pageHeader.appendChild(badge);
+  }
+  let positionCounter = null;
+  if (pageHeader) {
+    positionCounter = pageHeader.querySelector('.product-position-counter');
+    if (!positionCounter) {
+      positionCounter = document.createElement('span');
+      positionCounter.className = 'product-position-counter';
+      pageHeader.appendChild(positionCounter);
+    }
   }
 
-  const sequence = [
+  const fallbackSequence = [
     {
       slug: 'mx5p3-sc-m2-fp',
       href: 'mx5p3-sc-m2-fp.html',
@@ -87,6 +106,19 @@
       image: '../../assets/images/products/orig-k9jr-bt-2dw-top-front.png'
     }
   ];
+  const librarySequence = Array.isArray(window.POSH_PRODUCT_LIBRARY?.sequence)
+    ? window.POSH_PRODUCT_LIBRARY.sequence
+    : [];
+  const fallbackBySlug = new Map(fallbackSequence.map((item) => [item.slug, item]));
+  const sequence = librarySequence.length
+    ? librarySequence
+        .filter((item) => item.core)
+        .map((item) => ({
+          ...(fallbackBySlug.get(item.slug) || {}),
+          ...item
+        }))
+        .filter((item) => item.slug && item.href)
+    : fallbackSequence;
 
   const descriptions = {
     'mx5p3-sc-m2-fp': 'MX5-P3-SC-M2-FP is a compact, lightweight Design for Reading 13.56 MHz High Frequency Radio Frequency Identification (RFID) & NFC cards, IC-Chip & Smart Cards, 3 tracks Magstripe data and a built-in Fingerprint Biometric-reader. The MX5-P3-SC-M2-FP is a 4 in 1 reader which offers diversity and ease of use thru its innovative design which can be easily installed vertically or horizontally. Enhance your login security with the 4 in 1, two or three factor Authentication device.',
@@ -101,10 +133,61 @@
     'mx5-k9-jr': 'K9Jr-Bluetooth Keyboard, 2DW is the Ideal Multi-Functional Barcode ID Reader to help you Read 1D and 2D barcodes from Drivers Licenses, Health ID Cards and Membership IDs. The K9Jr-Bluetooth offers diversity and ease of use thru its innovative design as a Bluetooth Keyboard. If you currently use a Magnetic card reader to read your Health Card then the K9Jr-Bluetooth will convert your Health card 2D barcode to a magnetic stripe data output via Bluetooth Keyboard. No need to modify your application. Two Barcode Auto trigger Sensors & a Manual trigger Button are built in as a standard feature of the K9Jr-Bluetooth. Optional RFID HF reader is available as an add-on feature.'
   };
 
+  const capabilities = {
+    'mx5p3-sc-m2-fp': [
+      { icon: 'HF-RFID.png', label: 'High Frequency RFID' },
+      { icon: 'IC-SC.png', label: 'Smart Chip Reader' },
+      { icon: 'mag_card.png', label: 'Magnetic Card Reader' },
+      { icon: 'FingerPrint.png', label: 'Fingerprint Reader' }
+    ],
+    'pos108': [
+      { icon: 'POS.png', label: 'Point of Sale' }
+    ],
+    'mx5-k9': [
+      { icon: 'BlueTooth.png', label: 'Bluetooth' },
+      { icon: '2DW.png', label: 'Barcode Reader' }
+    ],
+    'mx5pt': [
+      { icon: 'HF-RFID.png', label: 'High Frequency RFID' },
+      { icon: 'LF-RFID.png', label: 'Low Frequency RFID' }
+    ],
+    'mx5c-sc': [
+      { icon: 'IC-SC.png', label: 'Smart Chip Reader' }
+    ],
+    'mx5p3-sc-m2': [
+      { icon: 'HF-RFID.png', label: 'High Frequency RFID' },
+      { icon: 'IC-SC.png', label: 'Smart Chip Reader' },
+      { icon: 'mag_card.png', label: 'Magnetic Card Reader' }
+    ],
+    'mx5c-m2': [
+      { icon: 'HF-RFID.png', label: 'High Frequency RFID' }
+    ],
+    'mx5c-m2-fp': [
+      { icon: 'HF-RFID.png', label: 'High Frequency RFID' },
+      { icon: 'FingerPrint.png', label: 'Fingerprint Reader' }
+    ],
+    'mx5p3': [
+      { icon: 'IC-SC.png', label: 'Smart Chip Reader' },
+      { icon: 'mag_card.png', label: 'Magnetic Card Reader' }
+    ],
+    'mx5-k9-jr': [
+      { icon: 'BlueTooth.png', label: 'Bluetooth' },
+      { icon: '2DW.png', label: 'Barcode Reader' }
+    ]
+  };
+
   const heroImage = document.querySelector('.product-hero-frame img');
+  const productCopyPanel = document.querySelector('.product-copy');
+  if (productCopyPanel && !productCopyPanel.querySelector('.product-core-badge-inline')) {
+    const inlineBadge = document.createElement('span');
+    inlineBadge.className = 'product-core-badge-inline';
+    inlineBadge.textContent = 'Core Product';
+    productCopyPanel.appendChild(inlineBadge);
+  }
   const detailTitle = document.querySelector('.product-copy h2');
   const detailSubtitle = document.querySelector('.product-copy .detail-subtitle');
   let detailDescription = document.querySelector('.product-copy .detail-description');
+  const featureIcons = document.querySelector('.product-copy .product-feature-icons');
 
   const escapeHtml = (value) => String(value || '')
     .replace(/&/g, '&amp;')
@@ -189,6 +272,62 @@
 
   ensureDescriptionList();
 
+  const renderCapabilities = (slug) => {
+    if (!featureIcons) return;
+
+    const items = capabilities[slug] || [];
+    featureIcons.innerHTML = items
+      .map((item) => `
+        <span class="product-feature-icon" title="${escapeHtml(item.label)}">
+          <img src="../../assets/images/icons/${escapeHtml(item.icon)}" alt="${escapeHtml(item.label)}" />
+        </span>`)
+      .join('');
+  };
+
+  const ensureProductCopyScrollTrack = () => {
+    if (!productCopyPanel) return null;
+
+    let track = productCopyPanel.querySelector('.product-copy-scroll-track');
+    if (!track) {
+      track = document.createElement('span');
+      track.className = 'product-copy-scroll-track';
+      const thumb = document.createElement('span');
+      thumb.className = 'product-copy-scroll-thumb';
+      track.appendChild(thumb);
+      productCopyPanel.appendChild(track);
+    }
+
+    return track;
+  };
+
+  const updateProductCopyScrollIndicator = () => {
+    if (!productCopyPanel) return;
+
+    const track = ensureProductCopyScrollTrack();
+    if (!track) return;
+
+    const thumb = track.firstElementChild;
+    const hasOverflow = productCopyPanel.scrollHeight > productCopyPanel.clientHeight + 1;
+
+    productCopyPanel.classList.toggle('has-overflow', hasOverflow);
+
+    if (!hasOverflow || productCopyPanel.clientHeight <= 0) {
+      thumb.style.height = '0px';
+      thumb.style.transform = 'translateY(0)';
+      return;
+    }
+
+    const trackHeight = track.clientHeight;
+    const thumbHeight = Math.max(24, (productCopyPanel.clientHeight / productCopyPanel.scrollHeight) * trackHeight);
+    const maxScrollTop = productCopyPanel.scrollHeight - productCopyPanel.clientHeight;
+    const scrollRatio = maxScrollTop > 0 ? productCopyPanel.scrollTop / maxScrollTop : 0;
+    const maxThumbTop = trackHeight - thumbHeight;
+    const thumbTop = scrollRatio * maxThumbTop;
+
+    thumb.style.height = `${thumbHeight}px`;
+    thumb.style.transform = `translateY(${thumbTop}px)`;
+  };
+
   const getIndexFromUrl = () => {
     const params = new URLSearchParams(window.location.search);
     const requestedSlug = params.get('product');
@@ -221,6 +360,9 @@
   const renderProduct = (index, pushUrl) => {
     activeIndex = ((index % sequence.length) + sequence.length) % sequence.length;
     const currentItem = sequence[activeIndex];
+    if (positionCounter) {
+      positionCounter.textContent = `${activeIndex + 1}/${sequence.length}`;
+    }
 
     if (heroImage) {
       heroImage.src = currentItem.image;
@@ -228,17 +370,21 @@
     }
     if (detailTitle) detailTitle.textContent = currentItem.title;
     if (detailSubtitle) detailSubtitle.textContent = currentItem.subtitle;
+    renderCapabilities(currentItem.slug);
+    if (productCopyPanel) productCopyPanel.scrollTop = 0;
     if (detailDescription) {
       const descriptionText = descriptions[currentItem.slug] || detailDescription.textContent || '';
       const terms = getBoldTerms(currentItem, descriptionText);
       detailDescription.innerHTML = bulletify(descriptionText)
         .map((item) => `<li>${boldTermsInText(item, terms)}</li>`)
         .join('');
-      // Keep text at top when switching products so the container stays visually stable.
-      detailDescription.scrollTop = 0;
     }
     document.title = `${currentItem.title} | POSHMFG`;
+    if (searchLink) {
+      searchLink.href = `../../build-your-own/index.html?focus=${encodeURIComponent(currentItem.slug)}`;
+    }
     setNavLinks();
+    requestAnimationFrame(updateProductCopyScrollIndicator);
 
     if (pushUrl) {
       const nextUrl = `${currentItem.href}?product=${encodeURIComponent(currentItem.slug)}`;
@@ -261,6 +407,11 @@
   window.addEventListener('popstate', () => {
     renderProduct(getIndexFromUrl(), false);
   });
+
+  if (productCopyPanel) {
+    productCopyPanel.addEventListener('scroll', updateProductCopyScrollIndicator, { passive: true });
+    window.addEventListener('resize', updateProductCopyScrollIndicator);
+  }
 
   renderProduct(activeIndex, false);
 })();

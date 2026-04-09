@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Build Your Own | POSH MFG</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/styles.css" />
+  <link rel="stylesheet" href="styles.css" />
+  <script id="theme-init">(function(){try{var saved=localStorage.getItem("posch-theme");var theme=saved||"dark";document.documentElement.setAttribute("data-theme",theme);}catch(e){document.documentElement.setAttribute("data-theme","dark");}})();</script>
+</head>
+<body>
+  <header class="site-header inner-header">
+    <div class="shell nav-wrap glass">
+      <a class="brand brand-image" href="../index.html" aria-label="POSH home"><img class="brand-logo brand-logo-dark" src="../assets/images/Poshlogo_sm-dark.png" alt="POSH" /><img class="brand-logo brand-logo-light" src="../assets/images/Poshlogo_sm-light.png" alt="POSH" /></a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav"><span></span><span></span><span></span></button>
+      <nav id="site-nav" class="site-nav">
+        <div class="nav-links">
+          <a href="../index.html">Home</a>
+          <a href="../about.html">About Us</a>
+          <a href="../products.html">Products</a>
+          <a href="../use-cases.html">Use Cases</a>
+          <a href="../downloads.html">Downloads</a>
+          <a href="../contact.html">Contact Us</a>
+        </div>
+        <div class="nav-actions">
+          <div class="theme-switcher" role="group" aria-label="Theme switcher">
+            <button class="theme-option" type="button" data-theme-value="dark" aria-pressed="false" aria-label="Dark theme"><img src="../assets/images/theme-toggle-dark.svg" alt="" class="theme-icon" /></button>
+            <button class="theme-option" type="button" data-theme-value="light" aria-pressed="false" aria-label="Light theme"><img src="../assets/images/theme-toggle-light.svg" alt="" class="theme-icon" /></button>
+          </div>
+          <a class="button button-light" href="../contact.html#inquiry">Request Consultation</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main class="page-main">
+  <div class="page-shell">
+    <header class="page-header">
+      <div>
+        <p class="eyebrow">POSH MFG</p>
+        <h1>Build Your Own</h1>
+      </div>
+    </header>
+
+    <main class="panel builder">
+      <section class="filter-bar">
+        <div class="filter-copy">
+          <h2>Choose desired technologies</h2>
+          <p>Select one or more icons to instantly filter matching products.</p>
+        </div>
+        <div class="filter-actions">
+          <label class="variant-search" for="variantSearchInput">
+            <input id="variantSearchInput" type="search" placeholder="Search model, family, feature, or description terms" autocomplete="off" aria-label="Search variants" />
+          </label>
+          <div class="action-buttons">
+            <button id="clearFilters" class="clear-btn" type="button">Clear filters</button>
+          </div>
+          <p class="filter-actions-note">Clear filters anytime to reset the full list.</p>
+        </div>
+      </section>
+
+      <section class="feature-grid" aria-label="Feature selector">
+        
+      <button class="feature-chip" type="button" data-feature="2DW" aria-pressed="false">
+        <img src="../assets/images/icons/2DW.png" alt="Barcode Reader">
+        <span>Barcode Reader</span>
+      </button>
+    
+      <button class="feature-chip" type="button" data-feature="BlueTooth" aria-pressed="false">
+        <img src="../assets/images/icons/BlueTooth.png" alt="Bluetooth">
+        <span>Bluetooth</span>
+      </button>
+    
+      <button class="feature-chip" type="button" data-feature="DF-RFID" aria-pressed="false">
+        <img src="../assets/images/icons/DF-RFID.png" alt="Dual Frequency RFID">
+        <span>Dual Frequency RFID</span>
+      </button>
+    
+      <button class="feature-chip" type="button" data-feature="FingerPrint" aria-pressed="false">
+        <img src="../assets/images/icons/FingerPrint.png" alt="Fingerprint Reader">
+        <span>Fingerprint Reader</span>
+      </button>
+    
+      <button class="feature-chip" type="button" data-feature="HF-RFID" aria-pressed="false">
+        <img src="../assets/images/icons/HF-RFID.png" alt="High Frequency RFID">
+        <span>High Frequency RFID</span>
+      </button>
+    
+      <button class="feature-chip" type="button" data-feature="IC-SC" aria-pressed="false">
+        <img src="../assets/images/icons/IC-SC.png" alt="Smart Chip Reader">
+        <span>Smart Chip Reader</span>
+      </button>
+    
+      <button class="feature-chip" type="button" data-feature="LF-RFID" aria-pressed="false">
+        <img src="../assets/images/icons/LF-RFID.png" alt="Low Frequency RFID">
+        <span>Low Frequency RFID</span>
+      </button>
+    
+      <button class="feature-chip" type="button" data-feature="POS" aria-pressed="false">
+        <img src="../assets/images/icons/POS.png" alt="Point of Sale">
+        <span>Point of Sale</span>
+      </button>
+    
+      <button class="feature-chip" type="button" data-feature="mag_card" aria-pressed="false">
+        <img src="../assets/images/icons/mag_card.png" alt="Magnetic Card Reader">
+        <span>Magnetic Card Reader</span>
+      </button>
+    
+      </section>
+
+      <div class="product-grid-head" aria-live="polite">
+        <div class="result-count"><span id="resultCount">1/1</span></div>
+      </div>
+
+      <section id="productGrid" class="product-grid" aria-live="polite">
+      </section>
+
+      <div id="emptyState" class="empty-state">
+        <h3>No products match this combination.</h3>
+        <p>Clear one or more filters to broaden the results.</p>
+      </div>
+    </main>
+  </div>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="shell footer-bottom">© 2026 POSH MFG. All rights reserved.</div>
+  </footer>
+
+  <script src="../assets/js/main.js"></script>
+  <script src="../core-products/product-library.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

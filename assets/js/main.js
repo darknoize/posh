@@ -466,6 +466,8 @@ function initCoreProductNetwork() {
     }
   };
 
+  window.poshProductCatalog = products;
+
   const productTriggers = Array.from(networkSection.querySelectorAll('[data-core-product]'));
 
   const setActiveProduct = (slug) => {
