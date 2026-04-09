@@ -2,6 +2,8 @@
   if (window.__variantProductPagerInitialized) return;
   window.__variantProductPagerInitialized = true;
 
+  const buildYourOwnHref = '../../build-your-own/index.html';
+
   const fallbackSequence = [
     { slug: 'mx5p3-sc-m2-fp', href: 'mx5p3-sc-m2-fp.html', title: 'MX5-P3-SC-M2-FP', core: true },
     { slug: 'pos108', href: 'k9jr-bt-2dw-front.html', title: 'POS-108/708', core: true },
@@ -71,12 +73,6 @@
     }
     positionCounter.textContent = `${activeIndex + 1}/${sequence.length}`;
   }
-  if (pageHeader && currentItem.core && !pageHeader.querySelector('.product-core-badge')) {
-    const badge = document.createElement('span');
-    badge.className = 'product-core-badge';
-    badge.textContent = 'Core Product';
-    pageHeader.appendChild(badge);
-  }
   if (productCopyPanel) {
     const existingInlineBadge = productCopyPanel.querySelector('.product-core-badge-inline');
     if (currentItem.core && !existingInlineBadge) {
@@ -92,6 +88,159 @@
 
   const heroFrame = document.querySelector('.product-hero-frame');
   if (!heroFrame) return;
+
+  const detailTitle = document.querySelector('.product-copy h2');
+  const detailSubtitle = document.querySelector('.product-copy .detail-subtitle');
+  const detailDescription = document.querySelector('.product-copy .detail-description');
+  const escapeHtml = (value) => String(value || '')
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+
+  const escapeRegExp = (value) => String(value || '').replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+
+  const uniqueStrings = (values) => {
+    const seen = new Set();
+    return values
+      .map((value) => String(value || '').trim())
+      .filter((value) => {
+        if (!value) return false;
+        const key = value.toLowerCase();
+        if (seen.has(key)) return false;
+        seen.add(key);
+        return true;
+      });
+  };
+
+  const extractModelTokens = (text) => {
+    const matches = String(text || '').match(/\b[A-Za-z]{1,6}\d[A-Za-z0-9]*(?:-[A-Za-z0-9]+)+\b/g) || [];
+    return uniqueStrings(matches);
+  };
+
+  const expandTermVariants = (text) => {
+    const value = String(text || '').trim();
+    if (!value) return [];
+
+    return uniqueStrings([
+      value,
+      value.replace(/-/g, ' '),
+      value.replace(/[-,]/g, ' ').replace(/\s+/g, ' ').trim(),
+      value.replace(/[^A-Za-z0-9]+/g, ' ').replace(/\s+/g, ' ').trim()
+    ]);
+  };
+
+  const searchableTerms = [
+    'RFID', 'NFC', 'IC-Chip', 'Smart Card', 'Smart Cards', 'Magstripe', 'Magnetic Stripe',
+    'Fingerprint', 'Biometric', 'Bluetooth Keyboard', 'Bluetooth', 'Barcode', 'Authentication',
+    '1D', '2D', 'HF', 'LF', 'Drivers Licenses', 'Health ID Cards', 'Membership IDs',
+    'Manual trigger Button', 'Auto trigger Sensors', 'Cash Drawer', 'POS Printer'
+  ];
+
+  const iconLabels = Array.from(document.querySelectorAll('.product-feature-icons .product-feature-icon[title]'))
+    .map((node) => node.getAttribute('title') || '');
+
+  const getBoldTerms = (descriptionText) => uniqueStrings([
+    detailTitle ? detailTitle.textContent : '',
+    detailSubtitle ? detailSubtitle.textContent : '',
+    ...expandTermVariants(detailTitle ? detailTitle.textContent : ''),
+    ...expandTermVariants(detailSubtitle ? detailSubtitle.textContent : ''),
+    ...extractModelTokens(detailTitle ? detailTitle.textContent : ''),
+    ...extractModelTokens(detailSubtitle ? detailSubtitle.textContent : ''),
+    ...extractModelTokens(descriptionText),
+    ...iconLabels,
+    ...searchableTerms
+  ]).sort((a, b) => b.length - a.length);
+
+  const boldTermsInText = (text, terms) => {
+    let result = escapeHtml(text);
+    terms.forEach((term) => {
+      const pattern = new RegExp(`\\b${escapeRegExp(term)}\\b`, 'gi');
+      result = result.replace(pattern, (match) => `<strong>${match}</strong>`);
+    });
+    return result;
+  };
+
+  const bulletify = (text) => {
+    const chunks = String(text || '')
+      .split(/(?<=[.!?])\s+/)
+      .map((chunk) => chunk.trim())
+      .filter(Boolean);
+    return chunks.length ? chunks : [String(text || '').trim()];
+  };
+
+  const ensureDescriptionBullets = () => {
+    if (!detailDescription) return;
+    if (detailDescription.tagName === 'UL') return;
+
+    const list = document.createElement('ul');
+    list.className = detailDescription.className;
+    const text = detailDescription.textContent || '';
+    const boldTerms = getBoldTerms(text);
+    list.innerHTML = bulletify(text)
+      .map((item) => `<li>${boldTermsInText(item, boldTerms)}</li>`)
+      .join('');
+    detailDescription.replaceWith(list);
+  };
+
+  const ensureMetaGridPlacement = () => {
+    if (!productCopyPanel) return;
+
+    const metaGrid = productCopyPanel.querySelector('.meta-grid');
+    if (!metaGrid) return;
+
+    const actions = productCopyPanel.querySelector('.detail-actions');
+    if (actions) {
+      productCopyPanel.insertBefore(metaGrid, actions);
+      return;
+    }
+
+    const description = productCopyPanel.querySelector('.detail-description');
+    if (description) {
+      description.insertAdjacentElement('afterend', metaGrid);
+      return;
+    }
+
+  };
+
+  const linkFeatureIconsToBuilder = () => {
+    const iconNodes = document.querySelectorAll('.product-feature-icons .product-feature-icon');
+
+    iconNodes.forEach((node) => {
+      if (!node || node.tagName === 'A') {
+        if (node && node.tagName === 'A') {
+          node.href = buildYourOwnHref;
+          if (!node.getAttribute('aria-label')) {
+            const label = node.getAttribute('title') || 'Build Your Own';
+            node.setAttribute('aria-label', `Build Your Own (${label})`);
+          }
+        }
+        return;
+      }
+
+      const link = document.createElement('a');
+      link.className = node.className;
+      link.href = buildYourOwnHref;
+      const title = node.getAttribute('title');
+      if (title) {
+        link.setAttribute('title', title);
+        link.setAttribute('aria-label', `Build Your Own (${title})`);
+      } else {
+        link.setAttribute('aria-label', 'Build Your Own');
+      }
+
+      while (node.firstChild) {
+        link.appendChild(node.firstChild);
+      }
+
+      node.replaceWith(link);
+    });
+  };
+
+  linkFeatureIconsToBuilder();
+  ensureDescriptionBullets();
+  ensureMetaGridPlacement();
 
   let navPrev = heroFrame.querySelector('.product-nav-arrow.prev');
   let navNext = heroFrame.querySelector('.product-nav-arrow.next');

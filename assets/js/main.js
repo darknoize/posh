@@ -303,10 +303,10 @@ function initProductSearch() {
   let debounceTimer;
   input.addEventListener('input', () => {
     updateDropdown(input.value);
+    if (clearButton) {
+      clearButton.hidden = input.value.trim().length === 0;
+    }
     window.clearTimeout(debounceTimer);
-    debounceTimer = window.setTimeout(() => {
-      applyFilter(input.value);
-    }, 120);
   });
 
   input.addEventListener('keydown', (event) => {
@@ -567,7 +567,7 @@ function initQuickMessageModal() {
             </label>
             <label>
               Website
-              <input type="url" name="website" required placeholder="https://" autocomplete="url" />
+              <input type="url" name="website" required placeholder="your-site.example" autocomplete="url" />
             </label>
           </div>
 

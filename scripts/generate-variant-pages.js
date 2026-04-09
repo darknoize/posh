@@ -86,7 +86,7 @@ const esc = (v) => String(v || '')
   .replace(/'/g, '&#39;');
 
 (async () => {
-  const res = await fetch('https://www.poshmfg.ca/assets/products/products_data.json');
+  const res = await fetch('/assets/products/products_data.json');
   const data = await res.json();
 
   let written = 0;
@@ -97,15 +97,15 @@ const esc = (v) => String(v || '')
     const title = displayName(p.name);
     const subtitle = familyByName[p.name] || 'Product Family';
     const slug = file.replace(/\.html$/, '');
-    const image = `https://www.poshmfg.ca/assets/products/${encodeURIComponent(p.name)}/${encodeURIComponent((p.images || [])[0] || 'front.png')}`;
+    const image = `/assets/products/${encodeURIComponent(p.name)}/${encodeURIComponent((p.images || [])[0] || 'front.png')}`;
 
     const iconMarkup = (p.icons || []).map((icon) => {
       const label = iconLabels[icon] || icon;
-      return `<span class="product-feature-icon" title="${esc(label)}"><img src="../../assets/images/icons/${esc(icon)}" alt="${esc(label)}" /></span>`;
+      return `<a class="product-feature-icon" href="../../build-your-own/index.html" title="${esc(label)}" aria-label="Build Your Own (${esc(label)})"><img src="../../assets/images/icons/${esc(icon)}" alt="${esc(label)}" /></a>`;
     }).join('');
 
     const downloads = (p.downloads || []).map((d) => {
-      const url = `https://www.poshmfg.ca/assets/downloads/${d.url}`;
+      const url = `/assets/downloads/${d.url}`;
       return `<a class="button button-light" href="${esc(url)}" target="_blank" rel="noopener">${esc(d.label || 'Download')}</a>`;
     }).join('\n          ');
 
@@ -116,9 +116,6 @@ const esc = (v) => String(v || '')
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>${esc(title)} | POSHMFG</title>
   <script id="theme-init">(function(){try{var saved=localStorage.getItem("posch-theme");var theme=saved||"dark";document.documentElement.setAttribute("data-theme",theme);}catch(e){document.documentElement.setAttribute("data-theme","dark");}})();</script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../../assets/css/styles.css" />
   <link rel="stylesheet" href="../styles.css" />
 </head>
@@ -163,8 +160,8 @@ const esc = (v) => String(v || '')
       <aside class="panel product-copy" data-product-slug="${esc(slug)}">
         <p class="detail-label">Product Detail</p>
         <h2>${esc(title)}</h2>
-        <div class="product-feature-icons" aria-label="Product capabilities">${iconMarkup}</div>
         <p class="detail-subtitle">${esc(subtitle)}</p>
+        <div class="product-feature-icons" aria-label="Product capabilities">${iconMarkup}</div>
         <p class="detail-description">${esc(String(p.description || '').replace(/\s+/g, ' ').trim())}</p>
 
         <div class="detail-actions">

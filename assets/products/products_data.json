@@ -1,0 +1,603 @@
+{
+  "products": [
+    {
+      "name": "K9Jr-BT-2DW",
+      "description": "K9Jr-Bluetooth Keyboard, 2DW is the Ideal Multi-Functional Barcode ID Reader to help you Read 1D and 2D barcodes from Drivers Licenses, Health ID Cards and Membership IDs. The K9Jr-Bluetooth offers diversity and ease of use thru its innovative design as a Bluetooth Keyboard. If you currently use a Magnetic card reader to read your Health Card then the K9Jr-Bluetooth will convert your Health card 2D barcode to a magnetic stripe data output via Bluetooth Keyboard. No need to modify your application. Two Barcode Auto trigger Sensors & a Manual trigger Button are built in as a standard feature of the K9Jr-Bluetooth. Optional RFID HF reader is available as an add-on feature.",
+      "images": [
+        "side.png",
+        "top-front.png",
+        "top.png",
+        "back.png"
+      ],
+      "icons": ["BlueTooth.png", "2DW.png"],
+      "downloads": [
+        {
+          "label": "Brochure",
+          "url": "brochures/MX5-K9Jr-BT.pdf"
+        },
+        {
+          "label": "Software",
+          "url": "drivers/SetupBTLive.zip"
+        }
+      ]
+    },
+    {
+      "name": "MX5C-CBP-EM",
+      "description": "MX5C CBP EM is a slim, lightweight Design for Reading 125 KHz Low Frequency Radio Frequency Identification (RFID) cards. The MX5C-CBP-EM offers diversity and ease of use thru its innovative design and can be easily installed vertically or horizontally.",
+      "images": [
+        "top-front.png",
+        "top-back.png",
+        "right-side.png",
+        "left-side.png",
+        "front.png"
+      ],
+      "icons": ["LF-RFID.png"],
+      "downloads": [
+        {
+          "label": "Brochure",
+          "url": "brochures/MX5C-CBP-EM.pdf"
+        },
+        {
+          "label": "Drivers",
+          "url": "drivers/MX5_Drivers.zip"
+        },
+        {
+          "label": "Utility",
+          "url": "utilities/MX5Util_Installer.zip"
+        },
+        {
+          "label": "Utility Manual",
+          "url": "manuals/MX5_Utility_Manual.pdf"
+        }
+      ]
+    },
+    {
+      "name": "MX5C-CBP-EM-FP",
+      "description": "MX5C-CBP-EM-FP is a slim, lightweight Design for Reading 125 KHz Low Frequency Radio Frequency Identification (RFID) cards with a built-in Fingerprint Biometric-reader. The MX5C-CBP-EM-FP offers diversity and ease of use thru its innovative design and can be easily installed vertically or horizontally. Enhance your login security with the 2 in 1, two factor Authentication device.",
+      "images": ["top-front.png", "front.png", "top-back.png"],
+      "icons": ["LF-RFID.png", "FingerPrint.png"],
+      "downloads": [
+        {
+          "label": "Brochure",
+          "url": "brochures/MX5C-CBP-EM-FP.pdf"
+        },
+        {
+          "label": "Drivers",
+          "url": "drivers/MX5_Drivers.zip"
+        },
+        {
+          "label": "Utility",
+          "url": "utilities/MX5Util_Installer.zip"
+        },
+        {
+          "label": "Utility Manual",
+          "url": "manuals/MX5_Utility_Manual.pdf"
+        }
+      ]
+    },
+    {
+      "name": "MX5C-CBP-M2",
+      "description": "MX5C-CBP-M2 is a slim, lightweight Design for Reading 13.56 MHz High Frequency Radio Frequency Identification (RFID) & NFC cards. The MX5C-CBP-M2 offers diversity and ease of use thru its innovative design and can be easily installed vertically or horizontally.",
+      "images": ["top-front.png", "front.png", "top-back.png"],
+      "icons": ["HF-RFID.png"],
+      "downloads": [
+        {
+          "label": "Brochure",
+          "url": "brochures/MX5C-CBP-M2.pdf"
+        },
+        {
+          "label": "Drivers",
+          "url": "drivers/MX5_Drivers.zip"
+        },
+        {
+          "label": "Utility",
+          "url": "utilities/MX5Util_Installer.zip"
+        },
+        {
+          "label": "Utility Manual",
+          "url": "manuals/MX5_Utility_Manual.pdf"
+        }
+      ]
+    },
+    {
+      "name": "MX5C-CBP-M2-FP",
+      "description": "MX5C-CBP-M2-FP is a slim, lightweight Design for Reading 13.56 MHz High Frequency Radio Frequency Identification (RFID) & NFC cards with a built-in Fingerprint Biometric-reader. The MX5C-CBP-M2-FP offers diversity and ease of use thru its innovative design and can be easily installed vertically or horizontally. Enhance your login security with the 2 in 1, two factor Authentication device.",
+      "images": ["top-front.png", "front.png", "top-back.png"],
+      "icons": ["HF-RFID.png", "FingerPrint.png"],
+      "downloads": [
+        {
+          "label": "Brochure",
+          "url": "brochures/MX5C-CBP-M2-FP.pdf"
+        },
+        {
+          "label": "Drivers",
+          "url": "drivers/MX5_Drivers.zip"
+        },
+        {
+          "label": "Utility",
+          "url": "utilities/MX5Util_Installer.zip"
+        },
+        {
+          "label": "Utility Manual",
+          "url": "manuals/MX5_Utility_Manual.pdf"
+        }
+      ]
+    },
+    {
+      "name": "MX5C-CBP-SC",
+      "description": "MX5C-CBP-SC is a slim, lightweight Design for Reading IC-Chip & Smart Cards. The MX5C-CBP-SC offers diversity and ease of use thru its innovative design and can be easily installed vertically or horizontally.",
+      "images": ["top-front.png", "front.png", "top-back.png"],
+      "icons": ["IC-SC.png"],
+      "downloads": [
+        {
+          "label": "Brochure",
+          "url": "brochures/MX5C-CBP-SC.pdf"
+        },
+        {
+          "label": "Drivers",
+          "url": "drivers/MX5_Drivers.zip"
+        },
+        {
+          "label": "Utility",
+          "url": "utilities/MX5Util_Installer.zip"
+        },
+        {
+          "label": "Utility Manual",
+          "url": "manuals/MX5_Utility_Manual.pdf"
+        }
+      ]
+    },
+    {
+      "name": "MX5C-CBP-SC-FP",
+      "description": "MX5C-CBP-SC-FP is a slim, lightweight Design for Reading IC-Chip & Smart Cards, with a built-in Fingerprint Biometric-reader. The MX5C-CBP-SC-FP offers diversity and ease of use thru its innovative design and can be easily installed vertically or horizontally. Enhance your login security with the 2 in 1, two factor Authentication device.",
+      "images": ["top-front.png", "front.png", "top-back.png"],
+      "icons": ["IC-SC.png", "FingerPrint.png"],
+      "downloads": [
+        {
+          "label": "Brochure",
+          "url": "brochures/MX5C-CBP-SC-FP.pdf"
+        },
+        {
+          "label": "Drivers",
+          "url": "drivers/MX5_Drivers.zip"
+        },
+        {
+          "label": "Utility",
+          "url": "utilities/MX5Util_Installer.zip"
+        },
+        {
+          "label": "Utility Manual",
+          "url": "manuals/MX5_Utility_Manual.pdf"
+        }
+      ]
+    },
+    {
+      "name": "MX5P3-SC",
+      "description": "MX5P3-SC is a compact, lightweight Design for Reading IC-Chip & Smart Cards and 3 tracks Magstripe data. The MX5P3-SC is a 2 in 1 reader which offers diversity and ease of use thru its innovative design which can be easily installed vertically or horizontally.",
+      "images": ["top-front.png", "front.png", "top-back.png"],
+      "icons": ["IC-SC.png", "mag_card.png"],
+      "downloads": [
+        {
+          "label": "Brochure",
+          "url": "brochures/MX5P3-SC.pdf"
+        },
+        {
+          "label": "Drivers",
+          "url": "drivers/MX5_Drivers.zip"
+        },
+        {
+          "label": "Utility",
+          "url": "utilities/MX5Util_Installer.zip"
+        },
+        {
+          "label": "Utility Manual",
+          "url": "manuals/MX5_Utility_Manual.pdf"
+        }
+      ]
+    },
+    {
+      "name": "MX5P3-SC-FP",
+      "description": "MX5P3-SC-FP is a compact, lightweight Design for Reading IC-Chip & Smart Cards, 3 tracks Magstripe data and a built-in Fingerprint Biometric-reader. The MX5P3-SC-FP is a 3 in 1 reader which offers diversity and ease of use thru its innovative design which can be easily installed vertically or horizontally. Enhance your login security with the 3 in 1, two or three factor Authentication device.",
+      "images": ["top-front.png", "front.png", "top-back.png"],
+      "icons": ["IC-SC.png", "mag_card.png", "FingerPrint.png"],
+      "downloads": [
+        {
+          "label": "Brochure",
+          "url": "brochures/MX5P3-SC-FP.pdf"
+        },
+        {
+          "label": "Drivers",
+          "url": "drivers/MX5_Drivers.zip"
+        },
+        {
+          "label": "Utility",
+          "url": "utilities/MX5Util_Installer.zip"
+        },
+        {
+          "label": "Utility Manual",
+          "url": "manuals/MX5_Utility_Manual.pdf"
+        }
+      ]
+    },
+    {
+      "name": "MX5P3-SC-M2",
+      "description": "MX5P3-SC-M2 is a compact, lightweight Design for Reading 13.56 MHz High Frequency Radio Frequency Identification (RFID) & NFC cards, IC-Chip & Smart Cards, and 3 tracks Magstripe. The MX5P3-SC-M2 is a 3 in 1 reader which offers diversity and ease of use thru its innovative design which can be easily installed vertically or horizontally. Enhance your login security with the 3 in 1, two or three factor Authentication device.",
+      "images": ["top-front.png", "front.png", "top-back.png"],
+      "icons": ["HF-RFID.png", "IC-SC.png", "mag_card.png"],
+      "downloads": [
+        {
+          "label": "Brochure",
+          "url": "brochures/MX5P3-SC-M2.pdf"
+        },
+        {
+          "label": "Drivers",
+          "url": "drivers/MX5_Drivers.zip"
+        },
+        {
+          "label": "Utility",
+          "url": "utilities/MX5Util_Installer.zip"
+        },
+        {
+          "label": "Utility Manual",
+          "url": "manuals/MX5_Utility_Manual.pdf"
+        }
+      ]
+    },
+    {
+      "name": "MX5P3-SC-M2-FP",
+      "description": "MX5P3-SC-M2-FP is a compact, lightweight Design for Reading 13.56 MHz High Frequency Radio Frequency Identification (RFID) & NFC cards, IC-Chip & Smart Cards, 3 tracks Magstripe data and a built-in Fingerprint Biometric-reader. The MX5P3-SC-M2-FP is a 4 in 1 reader which offers diversity and ease of use thru its innovative design which can be easily installed vertically or horizontally. Enhance your login security with the 4 in 1, two or three factor Authentication device.",
+      "images": ["top-front.png", "front.png", "top-back.png"],
+      "icons": ["HF-RFID.png", "IC-SC.png", "mag_card.png", "FingerPrint.png"],
+      "downloads": [
+        {
+          "label": "Brochure",
+          "url": "brochures/MX5P3-SC-M2-FP.pdf"
+        },
+        {
+          "label": "Drivers",
+          "url": "drivers/MX5_Drivers.zip"
+        },
+        {
+          "label": "Utility",
+          "url": "utilities/MX5Util_Installer.zip"
+        },
+        {
+          "label": "Utility Manual",
+          "url": "manuals/MX5_Utility_Manual.pdf"
+        }
+      ]
+    },
+    {
+      "name": "MX5PC-SC-M2",
+      "description": "MX5PC-SC-M2 is a slim, lightweight Design for Reading 13.56 MHz High Frequency Radio Frequency Identification (RFID) & NFC cards, IC-Chip & Smart Cards. The MX5PC-SC-M2 is a 2 in 1 reader which offers diversity and ease of use thru its innovative design which can be easily installed vertically or horizontally. Enhance your login security with the 2 in 1, two factor Authentication device.",
+      "images": ["top-front.png", "front.png", "top-back.png"],
+      "icons": ["HF-RFID.png", "IC-SC.png"],
+      "downloads": [
+        {
+          "label": "Brochure",
+          "url": "brochures/MX5PC-SC-M2.pdf"
+        },
+        {
+          "label": "Drivers",
+          "url": "drivers/MX5_Drivers.zip"
+        },
+        {
+          "label": "Utility",
+          "url": "utilities/MX5Util_Installer.zip"
+        },
+        {
+          "label": "Utility Manual",
+          "url": "manuals/MX5_Utility_Manual.pdf"
+        }
+      ]
+    },
+    {
+      "name": "MX5PC-SC-M2-FP",
+      "description": "MX5PC-SC-M2-FP is a slim, lightweight Design for Reading 13.56 MHz High Frequency Radio Frequency Identification (RFID) & NFC cards, IC-Chip & Smart Cards, and a built-in Fingerprint Biometric-reader. The MX5PC-SC-M2-FP is a 3 in 1 reader which offers diversity and ease of use thru its innovative design which can be easily installed vertically or horizontally. Enhance your login security with the 3 in 1, two or three factor Authentication device",
+      "images": ["top-front.png", "front.png", "top-back.png"],
+      "icons": ["HF-RFID.png", "IC-SC.png", "FingerPrint.png"],
+      "downloads": [
+        {
+          "label": "Brochure",
+          "url": "brochures/MX5PC-SC-M2-FP.pdf"
+        },
+        {
+          "label": "Smart Chip Login Setup Application (64 bit)",
+          "url": "drivers/SCLAuthSetup(x64).msi"
+        },
+        {
+          "label": "Smart Chip Login Setup Application (32 bit)",
+          "url": "drivers/SCLAuthSetup(x86).msi"
+        },
+        {
+          "label": "Drivers",
+          "url": "drivers/MX5_Drivers.zip"
+        },
+        {
+          "label": "Utility",
+          "url": "utilities/MX5Util_Installer.zip"
+        },
+        {
+          "label": "Utility Manual",
+          "url": "manuals/MX5_Utility_Manual.pdf"
+        }
+      ]
+    },
+    {
+      "name": "MX5PT",
+      "description": "MX5PT is a slim, lightweight Table Top device for Reading 13.56 MHz High Frequency Radio Frequency Identification (RFID) & NFC cards and 125 KHz Low Frequency Radio Frequency Identification (RFID) cards. The MX5PT offers diversity of having a 2 in 1 reader, enhancing your login security offerings with the versatility of RFID HF & LF all in one.",
+      "images": ["front.png", "top.png", "right-side.png"],
+      "icons": ["HF-RFID.png", "LF-RFID.png"],
+      "downloads": [
+        {
+          "label": "Brochure",
+          "url": "brochures/MX5PT.pdf"
+        },
+        {
+          "label": "Brochure (Fingerprint Edition)",
+          "url": "brochures/MX5PT-FP.pdf"
+        },
+        {
+          "label": "Drivers",
+          "url": "drivers/MX5_Drivers.zip"
+        },
+        {
+          "label": "Utility",
+          "url": "utilities/MX5Util_Installer.zip"
+        },
+        {
+          "label": "Utility Manual",
+          "url": "manuals/MX5_Utility_Manual.pdf"
+        }
+      ]
+    },
+    {
+      "name": "MX53-CBP-CLS",
+      "description": "MX53-CBP-CLS is a compact, lightweight Design for Reading 3 tracks Magstripe data. The MX53-CBP-CLS reader offers diversity thru its innovative 35 feature-rich user configurable options. The Magnetic Card reader can be easily installed vertically or horizontally.",
+      "images": ["front.png", "top-front.png", "back.png"],
+      "icons": ["mag_card.png"],
+      "downloads": [
+        {
+          "label": "Brochure",
+          "url": "brochures/MX53-CBP-CLS.pdf"
+        },
+        {
+          "label": "Drivers",
+          "url": "drivers/MX5_Drivers.zip"
+        },
+        {
+          "label": "Utility",
+          "url": "utilities/MX5Util_Installer.zip"
+        },
+        {
+          "label": "Utility Manual",
+          "url": "manuals/MX5_Utility_Manual.pdf"
+        }
+      ]
+    },
+    {
+      "name": "MX53-CBP-LIT",
+      "description": "MX53-CBP-LIT is a compact, lightweight Design for Reading 3 tracks Magstripe data. The MX53-CBP-LIT reader offers diversity thru its innovative 35 feature-rich user configurable options. The Magnetic Card reader can be easily installed vertically or horizontally.",
+      "images": ["front.png", "top-front.png", "top-back.png"],
+      "icons": ["mag_card.png"],
+      "downloads": [
+        {
+          "label": "Brochure",
+          "url": "brochures/MX53-CBP-LIT.pdf"
+        },
+        {
+          "label": "Drivers",
+          "url": "drivers/MX5_Drivers.zip"
+        },
+        {
+          "label": "Utility",
+          "url": "utilities/MX5Util_Installer.zip"
+        },
+        {
+          "label": "Utility Manual",
+          "url": "manuals/MX5_Utility_Manual.pdf"
+        }
+      ]
+    },
+    {
+      "name": "MX53-CBP-EM",
+      "description": "MX53-CBP-EM is a compact, lightweight Design for Reading 125 KHz Low Frequency Radio Frequency Identification (RFID) cards and 3 tracks Magstripe data. The MX53-CBP-EM is a 2 in 1 reader which offers diversity and ease of use thru its innovative design which can be easily installed vertically or horizontally.",
+      "images": ["front.png", "top-front.png", "top-back.png"],
+      "icons": ["LF-RFID.png", "mag_card.png"],
+      "downloads": [
+        {
+          "label": "Brochure",
+          "url": "brochures/MX53-CBP-EM.pdf"
+        },
+        {
+          "label": "Drivers",
+          "url": "drivers/MX5_Drivers.zip"
+        },
+        {
+          "label": "Utility",
+          "url": "utilities/MX5Util_Installer.zip"
+        },
+        {
+          "label": "Utility Manual",
+          "url": "manuals/MX5_Utility_Manual.pdf"
+        }
+      ]
+    },
+    {
+      "name": "MX53-CBP-EM-FP",
+      "description": "MX53-CBP-EM-FP is a compact, lightweight Design for Reading 125 KHz Low Frequency Radio Frequency Identification (RFID) cards, 3 tracks Magstripe data cards and a built-in Fingerprint Biometric-reader. The MX53-CBP-EM-FP is a 3 in 1 reader which offers diversity and ease of use thru its innovative design which can be easily installed vertically or horizontally. Enhance your login security with the 3 in 1, two factor Authentication device.",
+      "images": ["front.png", "top-front.png", "top-back.png"],
+      "icons": ["LF-RFID.png", "mag_card.png", "FingerPrint.png"],
+      "downloads": [
+        {
+          "label": "Brochure",
+          "url": "brochures/MX53-CBP-EM-FP.pdf"
+        },
+        {
+          "label": "Drivers",
+          "url": "drivers/MX5_Drivers.zip"
+        },
+        {
+          "label": "Utility",
+          "url": "utilities/MX5Util_Installer.zip"
+        },
+        {
+          "label": "Utility Manual",
+          "url": "manuals/MX5_Utility_Manual.pdf"
+        }
+      ]
+    },
+    {
+      "name": "MX53-CBP-M2",
+      "description": "MX53-CBP-M2 is a compact, lightweight Design for Reading 13.56 MHz High Frequency Radio Frequency Identification (RFID) & NFC cards and 3 tracks Magstripe data. The MX53-CBP-M2 is a 2 in 1 reader which offers diversity and ease of use thru its innovative design which can be easily installed vertically or horizontally.",
+      "images": ["front.png", "top-front.png", "top-back.png"],
+      "icons": ["HF-RFID.png", "mag_card.png"],
+      "downloads": [
+        {
+          "label": "Brochure",
+          "url": "brochures/MX53-CBP-M2.pdf"
+        },
+        {
+          "label": "Drivers",
+          "url": "drivers/MX5_Drivers.zip"
+        },
+        {
+          "label": "Utility",
+          "url": "utilities/MX5Util_Installer.zip"
+        },
+        {
+          "label": "Utility Manual",
+          "url": "manuals/MX5_Utility_Manual.pdf"
+        }
+      ]
+    },
+    {
+      "name": "MX53-CBP-M2-FP",
+      "description": "MX53-CBP-M2-FP is a compact, lightweight Design for Reading 13.56 MHz High Frequency Radio Frequency Identification (RFID) & NFC cards, 3 tracks Magstripe data and a built-in Fingerprint Biometric-reader. The MX53-CBP-M2-FP is a 3 in 1 reader which offers diversity and ease of use thru its innovative design which can be easily installed vertically or horizontally. Enhance your login security with the 3 in 1, two factor Authentication device.",
+      "images": ["front.png", "top-front.png", "top-back.png"],
+      "icons": ["HF-RFID.png", "mag_card.png", "FingerPrint.png"],
+      "downloads": [
+        {
+          "label": "Brochure",
+          "url": "brochures/MX53-CBP-M2-FP.pdf"
+        },
+        {
+          "label": "Drivers",
+          "url": "drivers/MX5_Drivers.zip"
+        },
+
+        {
+          "label": "Utility",
+          "url": "utilities/MX5Util_Installer.zip"
+        },
+        {
+          "label": "Utility Manual",
+          "url": "manuals/MX5_Utility_Manual.pdf"
+        }
+      ]
+    },
+    {
+      "name": "K9-MAG-2DW",
+      "description": "K9 MAG-2DW is the Ideal Multi-Functional Barcode ID and Magstripe Reader all in one to help you Read 1 D and 2 D barcodes, Magnetic Stripe data from Drivers Licenses, Health ID Cards and Membership IDs. The K9 offers diversity and ease of use thru its innovative design. Two Barcode Auto trigger Sensors & a Manual trigger Button are built in as a standard feature of all the K9 versions. Optional RFID HF, RFID DF, IC Smart Card and Fingerprint readers are available as an add - on.",
+      "images": ["front.png", "top-back.png", "left-side.png"],
+      "icons": ["2DW.png", "mag_card.png", "DF-RFID.png"],
+      "downloads": [
+        {
+          "label": "Brochure",
+          "url": "brochures/K9-MAG-2DW.pdf"
+        },
+        {
+          "label": "Drivers",
+          "url": "drivers/MX5_Drivers.zip"
+        },
+
+        {
+          "label": "Utility",
+          "url": "utilities/MX5Util_Installer.zip"
+        },
+        {
+          "label": "Utility Manual",
+          "url": "manuals/MX5_Utility_Manual.pdf"
+        }
+      ]
+    },
+    {
+      "name": "K9-MAG-2DW-FP",
+      "description": "K9 MAG-2DW-FP is the Ideal Multi-Functional Barcode ID, Magstripe and Fingerprint Reader all in one to help you Read 1D and 2D barcodes, Magnetic Stripe data from Drivers Licenses, Health ID Cards, Membership IDs and for two factor authentication fingerprint bio-metric reading. The K9 offers diversity and ease of use thru its innovative design. Two Barcode Auto trigger Sensors & a Manual trigger Button are built in as a standard feature of all the K9 versions. Optional RFID HF, RFID DF, and IC Smart Card readers are available as an add-on.",
+      "images": ["front.png", "top-back.png", "left-side.png"],
+      "icons": ["2DW.png", "mag_card.png", "FingerPrint.png", "DF-RFID.png"],
+      "downloads": [
+        {
+          "label": "Brochure",
+          "url": "brochures/K9-MAG-2DW-FP.pdf"
+        },
+        {
+          "label": "Drivers",
+          "url": "drivers/MX5_Drivers.zip"
+        },
+
+        {
+          "label": "Utility",
+          "url": "utilities/MX5Util_Installer.zip"
+        },
+        {
+          "label": "Utility Manual",
+          "url": "manuals/MX5_Utility_Manual.pdf"
+        }
+      ]
+    },
+    {
+      "name": "K9Jr-2DW",
+      "description": "K9Jr 2DW is the Ideal Multi-Functional Barcode ID Reader to help you Read 1D and 2D barcodes from Drivers Licenses, Health ID Cards and Membership IDs. The K9Jr offers diversity and ease of use thru its innovative design. Two Barcode Auto trigger Sensors & a Manual trigger Button are built in as a standard feature of the K9Jr. Optional RFID HF, RFID DF, IC Smart Card and Fingerprint readers are available as an add-on.",
+      "images": ["left-side.png", "right-side.png", "top-back.png"],
+      "icons": ["2DW.png"],
+      "downloads": [
+        {
+          "label": "Brochure",
+          "url": "brochures/MX5-K9Jr.pdf"
+        },
+        {
+          "label": "Brochure (Fingerprint Edition)",
+          "url": "brochures/MX5-K9Jr-FP.pdf"
+        },
+        {
+          "label": "Drivers",
+          "url": "drivers/MX5_Drivers.zip"
+        },
+
+        {
+          "label": "Utility",
+          "url": "utilities/MX5Util_Installer.zip"
+        },
+        {
+          "label": "Utility Manual",
+          "url": "manuals/MX5_Utility_Manual.pdf"
+        }
+      ]
+    },
+    {
+      "name": "POS108",
+      "description": "POS108 is both a Dual Cash Drawer Alarm or a Printer Receipt Alarm all in one. Easy to install, No tools or software changes needed. Plug and Play. The POS108 can connect to virtually any POS Printers with a RJ12 Cash Drawer Port. The built in Dual Cash Drawer splitter offers an easy option to connecting two cash drawers to one POS printer. The drawer open alarm feature is easily configured offering a variety of user settings.",
+      "images": ["top.png", "back.png", "left-side.png"],
+      "icons": ["POS.png"],
+      "downloads": [
+        {
+          "label": "Brochure",
+          "url": "brochures/POS108.pdf"
+        }
+      ]
+    },
+    {
+      "name": "POS708",
+      "description": "POS708-USB is a Dual Cash Drawer Trigger and Alarm or Single or dual Paper Receipt Alarm with the use of a POS-PSen-708. Can support virtually any Printers with the use of a POS-Psen-708 as a paper receipt printer alarm. Easy to install and it is Plug & Play as a virtual serial port (VRS) or as a Stand alone device.",
+      "images": ["front.png", "back.png", "left-side.png"],
+      "icons": ["POS.png"],
+      "downloads": [
+        {
+          "label": "Brochure",
+          "url": "brochures/POS708.pdf"
+        }
+      ]
+    }
+  ]
+}

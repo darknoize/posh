@@ -649,17 +649,17 @@ html[data-theme="light"] .tech-icon {
   margin-bottom: 22px;
 }
 .core-network-search-shell {
-  display: flex;
-  align-items: center;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: start;
   gap: 12px;
   min-width: min(420px, 100%);
 }
 .core-network-search-shell .search-input-wrap {
   position: relative;
-  flex: 1;
   display: flex;
   align-items: center;
-  min-width: 200px;
+  min-width: 0;
 }
 .core-network-search-shell .search-input-wrap input {
   width: 100%;
@@ -1355,6 +1355,7 @@ a.product-card:hover {
   cursor: pointer;
   transition: background .2s ease, border-color .2s ease, color .2s ease;
   white-space: nowrap;
+  align-self: start;
 }
 .search-clear:hover {
   background: rgba(255,255,255,.12);
@@ -1928,6 +1929,13 @@ html[data-theme="light"] .hotspot span {
 @media (max-width: 860px) {
   .core-network-heading {
     display: block;
+  }
+  .core-network-search-shell {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  .core-network-search-shell .search-clear {
+    justify-self: end;
   }
   .core-network-intro {
     margin-top: 12px;
